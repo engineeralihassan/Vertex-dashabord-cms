@@ -21,10 +21,17 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { MceEditorComponent } from './mce-editor/mce-editor.component'
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 @NgModule({
   imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
     CommonModule,
     EditorModule,
     FeatherModule.pick(allIcons),
@@ -44,7 +51,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     AlertsComponent,
     GridListComponent,
     TooltipsComponent,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     AlertsComponent,
@@ -61,6 +68,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     SliderComponent,
     SlideToggleComponent,
     ButtonsComponent,
+    MceEditorComponent
   ],
   declarations: [
     MceEditorComponent

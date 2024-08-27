@@ -1,66 +1,127 @@
 <mat-sidenav-container class="sidenav-container">
-
   <!-- Sidebar -->
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <div class="p-16">
       <div class="mb-16">
         <a href="javascript:void(0)" class="d-flex align-items-center">
-          <img src="assets/images/logo.svg" alt="">
+          <img src="assets/images/logo.svg" alt="" />
         </a>
-
       </div>
 
       <div class="pt-8">
         <ul>
           <li class="list-group mb-8" *ngFor="let sidenav of sidebarMenu">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="{{ sidenav.link }}"
-              class="sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="{{ sidenav.icon }}" class="feather-base me-16"></i-feather> <span
-                class="ps-4">{{ sidenav.menu }}</span>
+            <a
+              matRipple
+              [matRippleColor]="'#f7f8f443'"
+              routerLink="{{ sidenav.link }}"
+              class="sidebar-menu fs-16 w-100 d-flex align-items-center"
+              [routerLinkActive]="routerActive"
+            >
+              <i-feather
+                name="{{ sidenav.icon }}"
+                class="feather-base me-16"
+              ></i-feather>
+              <span class="ps-4">{{ sidenav.menu }}</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
-
   </mat-sidenav>
 
   <mat-sidenav-content>
-
     <!-- Header -->
     <mat-toolbar class="header ps-24 pe-24">
-      <button type="button" class="ms-4" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <i-feather name="menu" class="text-light-muted feather-base mt-n3"></i-feather>
+      <button
+        type="button"
+        class="ms-4"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <i-feather
+          name="menu"
+          class="text-light-muted feather-base mt-n3"
+        ></i-feather>
       </button>
-      <button mat-icon-button class="ms-4 me-4" (click)="search=!search">
-        <i-feather name="search" class="mt-n3 text-light-muted feather-base text-dark"></i-feather>
+      <button mat-icon-button class="ms-4 me-4" (click)="search = !search">
+        <i-feather
+          name="search"
+          class="mt-n3 text-light-muted feather-base text-dark"
+        ></i-feather>
       </button>
-      <div class="ms-auto">
-        <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
+      <div class="ms-auto  d-flex align-items-end justify-content-center">
+        <button mat-icon-button class=" notification-btn  fs-16  pb-4 ps-4 pe-8 text-light-muted d-flex align-items-center justify-content-center" aria-label="Example icon button with a vertical three dot icon" [matMenuTriggerFor]="menu1" [matBadgeHidden]="hidden"  [matBadge]="notifications" matBadgePosition="before">
+          <i-feather
+              name="{{ 'bell' }}"
+              class="notification-btn--icon feather-base mt-n3"
+            ></i-feather>
+          </button>
+        <button
+          mat-button
+          class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center"
+          [matMenuTriggerFor]="menu"
+        >
           <div class="d-flex align-items-center">
-            <img src="assets/images/user2.webp" class="rounded-circle" alt="">
+            <img src="assets/images/user2.webp" class="rounded-circle" alt="" />
             <span class="fw-light ms-8 text-secondary">Hi,</span>
-            <span class="fw-bold ms-8">Julia</span>
+            <span class="fw-bold ms-8">Ali</span>
             <i-feather name="chevron-down" class="feather-base"></i-feather>
           </div>
         </button>
+
+
+       
         <mat-menu #menu="matMenu" class="profile-dropdown">
           <div class="p-16 mb-4">
             <button mat-menu-item class="fs-16">Edit Profile</button>
             <button mat-menu-item class="fs-16">Account</button>
             <button mat-menu-item class="fs-16">Change Password</button>
-            <button mat-menu-item class="fs-16">My Settings</button>
           </div>
 
-          <hr>
+          <hr />
 
           <div class="p-16">
-            <button mat-flat-button color="accent" class="w-100 text-white">Logout</button>
+            <button mat-flat-button color="accent" class="w-100 text-white">
+              Logout
+            </button>
           </div>
+        </mat-menu>
+        <mat-menu #menu1="matMenu" class="profile-dropdown">
+        
+        <ul class="notification-list">
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+          <li>This is the li tag </li>
+         
+        </ul>
+      
 
+   
         </mat-menu>
       </div>
     </mat-toolbar>
@@ -72,22 +133,27 @@
       </div>
     </div>
 
-    <p class="text-center pb-24 fs-16">© 2023 All rights reserved by <a
-        href="http://34.230.65.172/home" target="_blank"
-        class="text-indigo"></a></p>
-
+    <p class="text-center pb-24 fs-16">
+      © 2023 All rights reserved by
+      <a
+        href="http://34.230.65.172/home"
+        target="_blank"
+        class="text-indigo"
+      ></a>
+    </p>
   </mat-sidenav-content>
-
 </mat-sidenav-container>
-
 
 <!-- Search Box -->
 <div *ngIf="search" class="search-section d-flex align-items-center">
-  <mat-form-field class="w-100" color="primary" >
+  <mat-form-field class="w-100" color="primary">
     <mat-label class="fs-16">Search Here</mat-label>
-    <input matInput>
+    <input matInput />
   </mat-form-field>
-  <button mat-icon-button (click)="search=!search">
-    <i-feather name="x-circle" class="mt-n3 text-light-muted feather-base text-dark"></i-feather>
+  <button mat-icon-button (click)="search = !search">
+    <i-feather
+      name="x-circle"
+      class="mt-n3 text-light-muted feather-base text-dark"
+    ></i-feather>
   </button>
 </div>

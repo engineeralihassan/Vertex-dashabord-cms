@@ -17,6 +17,8 @@ interface sidebarMenu {
 export class FullComponent {
 
   search: boolean = false;
+  hidden:boolean=false;
+  notifications:number=3;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
