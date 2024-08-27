@@ -18,12 +18,15 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { TooltipsComponent } from './tooltips/tooltips.component'
+import { TooltipsComponent } from './tooltips/tooltips.component';
+import { MceEditorComponent } from './mce-editor/mce-editor.component'
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    EditorModule,
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     ButtonsComponent,
@@ -58,6 +61,9 @@ import { TooltipsComponent } from './tooltips/tooltips.component'
     SliderComponent,
     SlideToggleComponent,
     ButtonsComponent,
+  ],
+  declarations: [
+    MceEditorComponent
   ]
 })
 export class ComponentsModule { }

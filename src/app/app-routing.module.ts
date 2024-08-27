@@ -18,6 +18,7 @@ import { TooltipsComponent } from './components/tooltips/tooltips.component';
 import { ProductComponent } from './dashboard/dashboard-components/product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
+import { MceEditorComponent } from './components/mce-editor/mce-editor.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
       {path:"slide-toggle", component:SlideToggleComponent},
       {path:"tooltip", component:TooltipsComponent},
       {path:"button", component:ButtonsComponent},
+      {path:"tiny-mce", component:MceEditorComponent},
     ]
   },
 

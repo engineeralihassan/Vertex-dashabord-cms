@@ -5,7 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 
 interface sidebarMenu {
   link: string;
-  icon: string;
+  icon?: string;
   menu: string;
 }
 
@@ -37,7 +37,7 @@ export class FullComponent {
     {
       link: "/button",
       icon: "disc",
-      menu: "Buttons",
+      menu: "Buttons"
     },
     {
       link: "/forms",

@@ -1,0 +1,18 @@
+<editor
+apiKey="mhbf2elw7whx7itwrsnz7pc57271momgzrch6xm4hzx0hq09"
+  [init]="{
+    height: 500,
+    menubar: true,
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate  mentions tableofcontents footnotes mergetags autocorrect typography inlinecss markdown textcolor colorpicker',
+    toolbar: 'undo redo | blocks fontfamily fontsize styleselect fontselect | bold italic underline | link image media table mergetags textcolor color | addcomment showcomments | spellcheckdialog  | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+  }"
+  [(ngModel)]="content"
+></editor>
+
+
+<div>
+  <button (click)="saveContent()">Save Content</button>
+  <h3>Editor Content:</h3>
+  <div [innerHTML]="content"></div>
+</div>
+
