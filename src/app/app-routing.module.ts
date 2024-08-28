@@ -19,13 +19,15 @@ import { ProductComponent } from './dashboard/dashboard-components/product/produ
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { MceEditorComponent } from './components/mce-editor/mce-editor.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
     path:"",
     component:FullComponent,
     children: [
-      {path:"", redirectTo:"/home", pathMatch:"full"},
+      {path:"", redirectTo:"/login", pathMatch:"full"},
       {path:"home", component:DashboardComponent},
       {path:"alerts", component:AlertsComponent},
       {path:"forms", component:FormsComponent},
@@ -44,10 +46,13 @@ const routes: Routes = [
       {path:"tooltip", component:TooltipsComponent},
       {path:"button", component:ButtonsComponent},
       {path:"tiny-mce", component:MceEditorComponent},
+   
     ]
   },
+  {path:"login",component:LoginComponent},
+  {path:"sign-up",component:SignUpComponent},
 
-  {path:"", redirectTo:"/home", pathMatch:"full"},
+  {path:"", redirectTo:"/login", pathMatch:"full"},
   {path:"**", redirectTo:"/home", pathMatch:"full"},
 ];
 

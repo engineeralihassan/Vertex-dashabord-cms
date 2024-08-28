@@ -27,16 +27,71 @@
 .mat-list-item{
   cursor: pointer;
 }
+
 .notification-list{
 
   li{
     margin-top: 1rem;
     padding: 10px;
+    width: 95%;
+    margin: auto;
+    p{
+      margin-top: 0.3rem;
+    }
+    strong
+    {
+      color: #03c9d7;
+      font-weight: 500;
+    }
     
   }
   li:hover{
-    background-color:rgb(250, 250, 250);
-    width: 100%;
+    background-color:rgb(238, 238, 238);
+
     cursor: pointer;
     }
 }
+
+ .item{
+  position: relative;
+  cursor: pointer;
+ }
+ 
+ .item a{
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 30px;
+  line-height: 60px;
+ }
+ 
+ .item a:hover{
+  background: #33363a;
+  transition: 0.3s ease;
+ }
+ 
+ .item i{
+  margin-right: 15px;
+ }
+ 
+ .item a .dropdown{
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  transition: 0.3s ease;
+ }
+ 
+ .item .sub-menu{
+  background: #262627;
+  display: none;
+ }
+ 
+ .item .sub-menu a{
+  padding-left: 80px;
+ }
+ 
+ .rotate{
+  transform: rotate(90deg);
+ }
+ 

@@ -24,6 +24,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -71,7 +73,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MceEditorComponent
   ],
   declarations: [
-    MceEditorComponent
+    MceEditorComponent,
+    LoginComponent,
+    SignUpComponent
   ]
 })
 export class ComponentsModule { }

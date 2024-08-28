@@ -3,18 +3,18 @@ import { Component, OnInit } from '@angular/core';
 export interface PeriodicElement {
   id: number;
   name: string;
-  work: string;
-  project: string;
-  priority: string;
-  badge: string;
-  budget: string;
+  email: string;
+  company: string;
+  services: string;
+  help: string;
+  status:string
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, name: 'Deep Javiya', work: 'Frontend Devloper', project: 'Flexy Angular', priority: 'Low', badge: 'badge-info', budget: '$3.9k' },
-  { id: 2, name: 'Nirav Joshi', work: 'Project Manager', project: 'Hosting Press HTML', priority: 'Medium', badge: 'badge-primary', budget: '$24.5k' },
-  { id: 3, name: 'Sunil Joshi', work: 'Web Designer', project: 'Elite Admin', priority: 'High', badge: 'badge-danger', budget: '$12.8k' },
-  { id: 4, name: 'Maruti Makwana', work: 'Backend Devloper', project: 'Material Pro', priority: 'Critical', badge: 'badge-success', budget: '$2.4k' },
+  { id: 1, name: 'Deep Javiya', services: 'Frontend Devloper', company: 'Flexy Angular', status: 'Low', help: 'badge-info', email: '$3.9k' },
+  { id: 2, name: 'Nirav Joshi', services: 'Project Manager', company: 'Hosting Press HTML', status: 'Medium', help: 'badge-primary', email: '$24.5k' },
+  { id: 3, name: 'Sunil Joshi', services: 'Web Designer', company: 'Elite Admin', status: 'High', help: 'badge-danger', email: '$12.8k' },
+  { id: 4, name: 'Maruti Makwana', services: 'Backend Devloper', company: 'Material Pro', status: 'Critical', help: 'badge-success', email: '$2.4k' },
 ];
 
 
@@ -25,7 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ProductComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'assigned', 'name', 'priority', 'budget'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'company', 'services','status'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }

@@ -38,8 +38,8 @@ export class FullComponent {
     },
     {
       link: "/button",
-      icon: "disc",
-      menu: "Buttons"
+      icon: "file-text",
+      menu: "Services"
     },
     {
       link: "/forms",
@@ -83,7 +83,7 @@ export class FullComponent {
     },
     {
       link: "/progress",
-      icon: "bar-chart-2",
+      icon: "group_work",
       menu: "Progress Bar",
     },
     {
