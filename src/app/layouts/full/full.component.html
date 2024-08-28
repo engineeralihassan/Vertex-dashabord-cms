@@ -30,33 +30,27 @@
                 class="feather-base me-16"
               ></i-feather>
               
-              <span class="ps-4" *ngIf="sidenav.menu==='Pages'" [matMenuTriggerFor]="animals" >{{ sidenav.menu }}</span>
-              <span class="ps-4" *ngIf="sidenav.menu !== 'Pages'"  >{{ sidenav.menu }}</span>
+              <span class="ps-4" *ngIf="sidenav.menu==='Other Pages'" [matMenuTriggerFor]="animals" >{{ sidenav.menu }}</span>
+              <span class="ps-4" *ngIf="sidenav.menu !== 'Other Pages'"  >{{ sidenav.menu }}</span>
             </a>
           </li>
         </ul>
 
         <mat-menu #animals="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-          <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
+          <button mat-menu-item [matMenuTriggerFor]="vertebrates">Web Pages</button>
+          <button mat-menu-item [matMenuTriggerFor]="invertebrates">Legal Pages</button>
         </mat-menu>
 
         <mat-menu #vertebrates="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
-          <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
-          <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
-          <button mat-menu-item>Birds</button>
-          <button mat-menu-item>Mammals</button>
+          <button mat-menu-item>Home Page</button>
+          <button mat-menu-item>Footer</button>
         </mat-menu>
 
         <mat-menu #invertebrates="matMenu">
-          <button mat-menu-item>Insects</button>
-          <button mat-menu-item>Molluscs</button>
-          <button mat-menu-item>Crustaceans</button>
-          <button mat-menu-item>Corals</button>
-          <button mat-menu-item>Arachnids</button>
-          <button mat-menu-item>Velvet worms</button>
-          <button mat-menu-item>Horseshoe crabs</button>
+          <button mat-menu-item>About Us</button>
+          <button mat-menu-item>Privacy Policy</button>
+          <button mat-menu-item>Terms & Conditions</button>
+
         </mat-menu>
 
         <mat-menu #fish="matMenu">

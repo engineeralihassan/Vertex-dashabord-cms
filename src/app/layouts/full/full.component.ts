@@ -38,84 +38,84 @@ export class FullComponent {
     },
     {
       link: "/button",
-      icon: "file-text",
+      icon: "bar-chart-2",
       menu: "Services"
     },
     {
       link: "/forms",
-      icon: "layout",
-      menu: "Forms",
+      icon: "layers",
+      menu: "Industries",
     },
     {
       link: "/alerts",
-      icon: "info",
-      menu: "Alerts",
+      icon: "award",
+      menu: "Company",
     },
     {
       link: "/grid-list",
-      icon: "file-text",
-      menu: "Grid List",
+      icon: "grid",
+      menu: "Products",
     },
     {
       link: "/menu",
-      icon: "menu",
-      menu: "Menus",
+      icon: "sliders",
+      menu: "Careers",
     },
     {
       link: "/table",
-      icon: "grid",
-      menu: "Tables",
+      icon: "book",
+      menu: "Blogs",
     },
     {
       link: "/expansion",
-      icon: "divide-circle",
-      menu: "Expansion Panel",
+      icon: "voicemail",
+      menu: "Case Studies",
     },
     {
       link: "/chips",
-      icon: "award",
-      menu: "Chips",
+      icon: "slack",
+      menu: "Contact Us",
     },
     {
       link: "/tabs",
       icon: "list",
-      menu: "Tabs",
+      menu: "Other Pages",
     },
-    {
-      link: "/progress",
-      icon: "group_work",
-      menu: "Progress Bar",
-    },
-    {
-      link: "/toolbar",
-      icon: "voicemail",
-      menu: "Toolbar",
-    },
-    {
-      link: "/progress-snipper",
-      icon: "loader",
-      menu: "Progress Snipper",
-    },
-    {
-      link: "/tooltip",
-      icon: "bell",
-      menu: "Tooltip",
-    },
-    {
-      link: "/snackbar",
-      icon: "slack",
-      menu: "Snackbar",
-    },
-    {
-      link: "/slider",
-      icon: "sliders",
-      menu: "Slider",
-    },
-    {
-      link: "/slide-toggle",
-      icon: "layers",
-      menu: "Slide Toggle",
-    },
+    // {
+    //   link: "/progress",
+    //   icon: "bar-chart-2",
+    //   menu: "Progress Bar",
+    // },
+    // {
+    //   link: "/toolbar",
+    //   icon: "voicemail",
+    //   menu: "Toolbar",
+    // },
+    // {
+    //   link: "/progress-snipper",
+    //   icon: "loader",
+    //   menu: "Progress Snipper",
+    // },
+    // {
+    //   link: "/tooltip",
+    //   icon: "bell",
+    //   menu: "Tooltip",
+    // },
+    // {
+    //   link: "/snackbar",
+    //   icon: "slack",
+    //   menu: "Snackbar",
+    // },
+    // {
+    //   link: "/slider",
+    //   icon: "sliders",
+    //   menu: "Slider",
+    // },
+    // {
+    //   link: "/slide-toggle",
+    //   icon: "layers",
+    //   menu: "Slide Toggle",
+    // },
   ]
 
 }
