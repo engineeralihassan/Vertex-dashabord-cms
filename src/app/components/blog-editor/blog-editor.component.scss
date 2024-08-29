@@ -1,0 +1,23 @@
+.save-btn{
+    background-color: hsl(0, 100%, 27%);
+    color: #fff;
+}
+.editor-tabs-container{
+    min-width: 80vw;
+    min-height: 75vh;
+    max-height: 85vh;
+    overflow-y: auto;
+
+}
+@media(max-width:600px){
+    .editor-tabs-container{
+        min-width: 95vw;
+        min-height: 75vh;
+        max-height: 75vh;
+
+    }
+}
+.success-snackbar{
+    background-color: green !important;
+    color: #ffff;
+}

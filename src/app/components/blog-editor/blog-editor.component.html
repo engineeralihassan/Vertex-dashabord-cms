@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Update Blog</h2>
+<mat-tab-group mat-stretch-tabs="false" class="editor-tabs-container">
+    <mat-tab label="Tab 1">
+        <mat-dialog-content class="mat-typography">
+            <app-mce-editor></app-mce-editor>
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button class="save-btn" mat-button [mat-dialog-close]="closeMode" cdkFocusInitial (click)="getContentFromChild()"  >Save</button>
+            </mat-dialog-actions>
+    </mat-tab>
+    <mat-tab label="Tab 2">
+      <h1>This is the content of the tab 2</h1>
+    </mat-tab>
+  </mat-tab-group>
+

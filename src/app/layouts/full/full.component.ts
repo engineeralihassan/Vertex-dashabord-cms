@@ -32,7 +32,7 @@ export class FullComponent {
 
   sidebarMenu: sidebarMenu[] = [
     {
-      link: "/home",
+      link: "/dashboard",
       icon: "home",
       menu: "Dashboard",
     },
@@ -62,7 +62,7 @@ export class FullComponent {
       menu: "Careers",
     },
     {
-      link: "/table",
+      link: "/blogs",
       icon: "book",
       menu: "Blogs",
     },

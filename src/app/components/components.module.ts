@@ -19,13 +19,12 @@ import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
-import { MceEditorComponent } from './mce-editor/mce-editor.component'
-import { EditorModule } from '@tinymce/tinymce-angular';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+
 
 
 
@@ -35,7 +34,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatIconModule,
     MatTooltipModule,
     CommonModule,
-    EditorModule,
     FeatherModule.pick(allIcons),
     DemoFlexyModule,
     ButtonsComponent,
@@ -70,12 +68,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SliderComponent,
     SlideToggleComponent,
     ButtonsComponent,
-    MceEditorComponent
   ],
   declarations: [
-    MceEditorComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
   ]
 })
 export class ComponentsModule { }

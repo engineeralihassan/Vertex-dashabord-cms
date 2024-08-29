@@ -21,6 +21,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { MceEditorComponent } from './components/mce-editor/mce-editor.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { BlogsComponent } from './components/pages/blogs/blogs.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
     component:FullComponent,
     children: [
       {path:"", redirectTo:"/login", pathMatch:"full"},
-      {path:"home", component:DashboardComponent},
+      {path:"dashboard", component:DashboardComponent},
       {path:"alerts", component:AlertsComponent},
       {path:"forms", component:FormsComponent},
       {path:"table", component:ProductComponent},
@@ -45,6 +46,7 @@ const routes: Routes = [
       {path:"slide-toggle", component:SlideToggleComponent},
       {path:"tooltip", component:TooltipsComponent},
       {path:"button", component:ButtonsComponent},
+      {path:"blogs", component:BlogsComponent},
       {path:"tiny-mce", component:MceEditorComponent},
    
     ]
@@ -53,7 +55,7 @@ const routes: Routes = [
   {path:"sign-up",component:SignUpComponent},
 
   {path:"", redirectTo:"/login", pathMatch:"full"},
-  {path:"**", redirectTo:"/home", pathMatch:"full"},
+  {path:"**", redirectTo:"/dashboard", pathMatch:"full"},
 ];
 
 @NgModule({
