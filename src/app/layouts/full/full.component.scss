@@ -16,7 +16,7 @@
   z-index: 1;
 }
 .notification-btn{
-  background-color:#03c9d7;
+  background-color:hsl(0, 100%, 27%);
   color: #ffff;
   margin: 2.5rem 0.7rem 0 0rem;
   font-size: 1rem;
@@ -40,7 +40,7 @@
     }
     strong
     {
-      color: #03c9d7;
+      color:hsl(0, 100%, 27%);
       font-weight: 500;
     }
     
@@ -93,5 +93,14 @@
  
  .rotate{
   transform: rotate(90deg);
+ }
+ .list-group{
+  .activelink{
+    background-color:hsl(0, 100%, 27%) !important;
+  }
+ }
+ .body-wrapper{
+  margin-top: 1.5rem;
+  background-color:#eff1f3;
  }
  

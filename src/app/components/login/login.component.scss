@@ -34,7 +34,7 @@ form {
     margin-bottom:  20px;
     color:  rgba(#000, .5);
     span {
-      color:  rgba(#000, 1);
+      color:hsl(0, 100%, 27%) ;
       font-weight:  700; 
     }
   }
@@ -70,7 +70,7 @@ button {
   text-align:  center; 
   padding:  15px 40px;
   margin-top:  5px; 
-  background-color:  saturate(#03c9d7, 30%); 
+  background-color:  saturate(hsl(0, 100%, 27%) , 30%); 
   color:  #fff; 
   font-size:  14px;
   margin-left:  auto; 
@@ -202,7 +202,7 @@ $displacement:  3px;
      a{
 
      
-        color: #03c9d7;
+        color:hsl(0, 100%, 27%) ;
         cursor: pointer;
      }
 
