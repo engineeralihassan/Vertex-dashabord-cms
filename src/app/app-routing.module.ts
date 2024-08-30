@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,7 @@ const routes: Routes = [
    
     ]
   },
+  {path:"reset-password",component:ResetPasswordComponent},
   {path:"forgot-password",component:ForgetPasswordComponent},
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
