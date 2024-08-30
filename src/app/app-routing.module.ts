@@ -22,6 +22,7 @@ import { MceEditorComponent } from './components/mce-editor/mce-editor.component
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,7 @@ const routes: Routes = [
    
     ]
   },
+  {path:"forgot-password",component:ForgetPasswordComponent},
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
 

@@ -1,16 +1,48 @@
 <h2 mat-dialog-title>Update Blog</h2>
-<mat-tab-group mat-stretch-tabs="false" class="editor-tabs-container">
-    <mat-tab label="Tab 1">
-        <mat-dialog-content class="mat-typography">
+
+
+        <mat-dialog-content class="mat-typography editor-tabs-container">
+          <div class="blog-data-form">
+            <div class="tow-col-row">
+              <mat-form-field class="cloumne" appearance="outline">
+                <mat-label>Blog Title</mat-label>
+                <input matInput placeholder="Placeholder">
+              </mat-form-field>
+              <mat-form-field class="cloumne" appearance="outline">
+                <mat-label>Blog Category</mat-label>
+                <mat-select>
+                  <mat-option value="one">First option</mat-option>
+                  <mat-option value="two">Second option</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="tow-col-row">
+     
+                <div class="form-file0feild cloumne">
+                  <p>Upload Feature File</p>
+                  <input type="file" placeholder="Upload Thumbnail">
+                </div>
+                <div class="form-file0feild cloumne">
+                  <p>Uplaod Thumbnail File</p>
+                  <input type="file" placeholder="Upload Feature Image">
+                </div>
+               
+             
+            </div>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Blog Short Description</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+          <h3 class="blog-content-heading">Blog Content</h3>
             <app-mce-editor></app-mce-editor>
             </mat-dialog-content>
             <mat-dialog-actions align="end">
               <button mat-button mat-dialog-close>Cancel</button>
               <button class="save-btn" mat-button [mat-dialog-close]="closeMode" cdkFocusInitial (click)="getContentFromChild()"  >Save</button>
             </mat-dialog-actions>
-    </mat-tab>
-    <mat-tab label="Tab 2">
-      <h1>This is the content of the tab 2</h1>
-    </mat-tab>
-  </mat-tab-group>
+   
+ 
+ 
 
