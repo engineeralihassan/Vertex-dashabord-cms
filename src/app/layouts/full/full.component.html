@@ -17,7 +17,7 @@
 
       <div class="pt-8">
         <ul class="sidebar-menu-list-menu">
-          <li class="list-group mb-8" *ngFor="let sidenav of sidebarMenu">
+          <li class="list-group mb-8" *ngFor="let sidenav of sidebarMenu" (click)="deactiveLink()">
             <a
               matRipple
               [matRippleColor]="'#f7f8f443'"
@@ -33,12 +33,13 @@
             </a>
           </li>
           <!-- static menu -->
-          <li class="list-group mb-8">
+          <li class="list-group mb-8" (click)="deactiveLink()">
             <a
               matRipple
               [matRippleColor]="'#f7f8f443'"
               class="sidebar-menu fs-16 w-100 d-flex align-items-center"
-              [routerLinkActive]="routerActive"
+              [class.activelink]="requestsPage"
+              
             >
               <i-feather
                 name="slack"
@@ -53,6 +54,7 @@
               [matRippleColor]="'#f7f8f443'"
               class="sidebar-menu fs-16 w-100 d-flex align-items-center"
               [routerLinkActive]="routerActive"
+              [class.activelink]="othersPageActive"
             >
               <i-feather
                 name="list"
@@ -62,12 +64,12 @@
             </a>
           </li>
         </ul>
-
+     
         <mat-menu #forms="matMenu">
-          <button mat-menu-item>Get In Touch</button>
-          <button mat-menu-item>Job Applications</button>
-          <button mat-menu-item>Blog Subscriptions</button>
-          <button mat-menu-item>Training Program</button>
+          <button mat-menu-item   (click)="navigation('requests-data/contactus','request')">Get In Touch</button>
+          <button mat-menu-item  (click)="navigation('requests-data/job-applications','request')">Job Applications</button>
+          <button mat-menu-item  (click)="navigation('requests-data/bolg-subscriptions','request')">Blog Subscriptions</button>
+          <button mat-menu-item  (click)="navigation('requests-data/training-program','request')">Training Program</button>
 
         </mat-menu>
         <mat-menu #pages="matMenu">
@@ -82,9 +84,9 @@
 
         <mat-menu #invertebrates="matMenu">
       
-          <button mat-menu-item (click)="navigation('about-us')">About Us</button>
-          <button mat-menu-item (click)="navigation('privacy-policy')">Privacy Policy</button>
-          <button mat-menu-item (click)="navigation('terms-conditions')">Terms & Conditions</button>
+          <button mat-menu-item (click)="navigation('about-us','legel')">About Us</button>
+          <button mat-menu-item (click)="navigation('privacy-policy','legal')">Privacy Policy</button>
+          <button mat-menu-item (click)="navigation('terms-conditions','legal')">Terms & Conditions</button>
         </mat-menu>
 
         <mat-menu #fish="matMenu">

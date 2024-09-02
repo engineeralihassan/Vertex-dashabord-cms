@@ -13,11 +13,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { MceEditorComponent } from '../../mce-editor/mce-editor.component';
 import { DemoFlexyModule } from 'src/app/demo-flexy-module';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import { CommonModule } from '@angular/common';
 export interface UserData {
   img: string;
-  title: string;
+  year: string;
   description: string;
-  author: string;
 }
 /** Constants used to fill up our data base. */
 const FRUITS: string[] = [
@@ -56,26 +56,28 @@ const NAMES: string[] = [
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.scss'],
-  imports: [MatDialogModule, MatButtonModule,MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,MatSelectModule,DemoFlexyModule,MatExpansionModule],
+  imports: [MatDialogModule, MatButtonModule,MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,MatSelectModule,DemoFlexyModule,MatExpansionModule,CommonModule],
   standalone:true,
 })
 export class AboutUsComponent {
   @ViewChild(MceEditorComponent) childComponent!: MceEditorComponent;
-  displayedColumns: string[] = ['img', 'title', 'description','actions'];
+  displayedColumns: string[] = ['img', 'year', 'description','actions'];
   dataSource!: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   closeMode:boolean=false;
+  isShowForm:boolean=false;
   private _snackBar = inject(MatSnackBar);
   constructor() {
     // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
+    const users = Array.from({length:6}, (_, k) => createNewUser(k + 1));
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
   }
-
+toggleForm(){
+  this.isShowForm=!this.isShowForm;
+}
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action,{
       duration: 3000,
@@ -115,12 +117,11 @@ function createNewUser(id: number): UserData {
     ' ' +
     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
     '.';
-
+let year=2018+1;
   return {
     img: 'https://picsum.photos/600/400?image=1083',
-    title: name+'This is the uniques text',
+    year: year.toString(),
     description: Math.round(Math.random() * 100).toString()+FRUITS[Math.round(Math.random() * (FRUITS.length - 1))]+"Unique description text",
-    author: name,
   };
 }
 

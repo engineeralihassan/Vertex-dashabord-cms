@@ -20,6 +20,8 @@ export class FullComponent {
   search: boolean = false;
   hidden:boolean=false;
   notifications:number=3;
+  othersPageActive:boolean=false;
+  requestsPage:boolean=false
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -72,46 +74,24 @@ export class FullComponent {
       icon: "voicemail",
       menu: "Case Studies",
     },
-
-    // {
-    //   link: "/progress",
-    //   icon: "bar-chart-2",
-    //   menu: "Progress Bar",
-    // },
-    // {
-    //   link: "/toolbar",
-    //   icon: "voicemail",
-    //   menu: "Toolbar",
-    // },
-    // {
-    //   link: "/progress-snipper",
-    //   icon: "loader",
-    //   menu: "Progress Snipper",
-    // },
-    // {
-    //   link: "/tooltip",
-    //   icon: "bell",
-    //   menu: "Tooltip",
-    // },
-    // {
-    //   link: "/snackbar",
-    //   icon: "slack",
-    //   menu: "Snackbar",
-    // },
-    // {
-    //   link: "/slider",
-    //   icon: "sliders",
-    //   menu: "Slider",
-    // },
-    // {
-    //   link: "/slide-toggle",
-    //   icon: "layers",
-    //   menu: "Slide Toggle",
-    // },
   ]
 
-  navigation(route:string){
-    this.router.navigate([`/${route}`])
+  navigation(route:string,page:string){
+    this.router.navigate([`/${route}`]);
+    this.activeLinkPage(page);
+  }
+  deactiveLink(){
+   this.othersPageActive=false;
+   this.requestsPage=false;
+  }
+  activeLinkPage(page:string){
+    if(page==='request'){
+      this.requestsPage=true;
+      this.othersPageActive=false;
+    }else{
+      this.othersPageActive=true;
+      this.requestsPage=false;
+    }
   }
 
 }

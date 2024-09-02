@@ -1,0 +1,110 @@
+.example-button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+  }
+  
+  .grid > article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  }
+  
+  .grid > article img {
+    max-width: 100%;
+  }
+  
+  .grid .text {
+    padding: 20px;
+    .buttons{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1rem}
+.edit-btn{
+    background-color: hsl(0, 100%, 27%) ;
+    color: #ffff;
+
+
+
+    }
+ 
+  }
+  .btn{
+    background-color: hsl(0, 100%, 27%) ;
+    color: #ffff;
+  }
+  .heading-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0 2rem 0;
+  }
+
+  table {
+    max-width: 90% !important;
+  }
+  
+  .mat-mdc-text-field-wrapper {
+    font-size: 14px;
+    width: 90%;
+    background-color: #fff !important;
+
+
+  }
+ 
+  .blogs-filter-input{
+    
+  }
+  
+  td, th {
+    width:25%;
+  }
+  td{
+    img{
+        width: 7rem;
+        height: 7rem;
+        border-radius: 5px;
+
+    }
+  }
+  .table-actions-row{
+  button:not(:last-child){
+   margin-right: 0.5rem;
+  }
+
+  }
+  .save-btn{
+    background-color: hsl(0, 100%, 27%);
+    color: #fff;
+}
+.action-icons-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.action-icon{
+color: hsl(0, 100%, 27%);
+cursor: pointer;
+}
+.action-icon1{
+  color:orange;
+  cursor: pointer;
+  }
+  .action-icon3{
+    color:green;
+    cursor: pointer;
+    }
+
+.mat-mdc-text-field-wrapper{
+  border-radius: 10px;
+  background-color: #ffff !important;
+  border: 1px solid red !important;
+} 

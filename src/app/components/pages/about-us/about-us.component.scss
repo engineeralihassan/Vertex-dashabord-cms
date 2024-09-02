@@ -27,14 +27,12 @@
 
 table {
     max-width: 90% !important;
-    border: 2px solid red;
   }
   
   .mat-mdc-text-field-wrapper {
     font-size: 14px;
     width: 90%;
     background-color: #fff !important;
-    border: 2px solid red !important;
 
 
   }
@@ -48,8 +46,8 @@ table {
   }
   td{
     img{
-        width: 7rem;
-        height: 7rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 5px;
 
     }
@@ -74,6 +72,7 @@ margin-top: 2rem;
     align-items: center;
     gap: 1rem;
     width: 100%;
+    flex-wrap: wrap;
     .cloumne{
         width:49%;
     }
@@ -81,14 +80,47 @@ margin-top: 2rem;
 }
   }
 
+  .action-icon{
+    color: hsl(0, 100%, 27%);
+    cursor: pointer;
+    }
+    .action-icon1{
+      color:orange;
+      cursor: pointer;
+      }
+      .action-icon3{
+        color:green;
+        cursor: pointer;
+        }
+
   input[type="file"] {
     position: relative;
   }
-  
+  .years-story-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+  }
   input[type="file"]::file-selector-button {
     width: 136px;
     color: transparent;
   }
+  .add-year-image{
+    margin-bottom: 1rem;
+  }
+  hr{
+    margin: 1rem 0 2rem 0 ;
+  }
+  .add-new-story-section{
+    display: none !important;
+    transition: all 0.5s ease;
+  }
+  .add-new-story-section.show-form{
+    display: flex !important;
+  }
+
+
   
   /* Faked label styles and icon */
   input[type="file"]::before {
@@ -157,8 +189,34 @@ border-radius: 3px;
     align-items: center;
     gap: 1rem;
     width: 100%;
+    flex-wrap: wrap;
     .cloumne{
         width:49%;
     }
 
 }
+
+.about-us-section{
+ margin: 1rem 0;
+}
+
+.clients-logos-section{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+        img {
+            flex-basis: 24%;
+            height:7rem;
+            width: 7rem;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit:scale-down;
+            border-radius: 1rem;
+        }
+      }
+      td a{
+        color:blue;
+      }
