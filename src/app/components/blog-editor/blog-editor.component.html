@@ -1,8 +1,9 @@
-<h2 mat-dialog-title>Update Blog</h2>
+<h1 mat-dialog-title>Blog Details</h1>
 
-
+        
         <mat-dialog-content class="mat-typography editor-tabs-container">
           <div class="blog-data-form">
+            
             <div class="tow-col-row">
               <mat-form-field class="cloumne" appearance="outline">
                 <mat-label>Blog Title</mat-label>
@@ -34,6 +35,34 @@
               <mat-label>Blog Short Description</mat-label>
               <textarea matInput></textarea>
             </mat-form-field>
+          </div>
+          <div class="blog-cta-section">
+            <h3>Blog CTA</h3>
+            <div class="blog-data-form">
+              <div class="tow-col-row">
+                <mat-form-field class="cloumne" appearance="outline">
+                  <mat-label>CTA Title</mat-label>
+                  <input matInput placeholder="Placeholder">
+                </mat-form-field>
+                <mat-form-field class="cloumne" appearance="outline">
+                  <mat-label>CTA Button Text</mat-label>
+                  <input matInput placeholder="Placeholder">
+                </mat-form-field>
+              </div>
+              <div class="tow-col-row">
+                <mat-form-field class="cloumne" appearance="outline">
+                  <mat-label>CTA URL</mat-label>
+                  <input matInput placeholder="Placeholder">
+                </mat-form-field>
+                  <div class="form-file0feild cloumne">
+                    <p>CTA Image</p>
+                    <input type="file" placeholder="Upload Feature Image">
+                  </div>
+                 
+               
+              </div>
+  
+            </div>
           </div>
           <h3 class="blog-content-heading">Blog Content</h3>
             <app-mce-editor></app-mce-editor>

@@ -24,6 +24,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BlogsComponent } from './components/pages/blogs/blogs.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AboutUsComponent } from './components/pages/about-us/about-us.component';
+import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
+import { TermsCondtionsComponent } from './components/pages/terms-condtions/terms-condtions.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,9 @@ const routes: Routes = [
       {path:"button", component:ButtonsComponent},
       {path:"blogs", component:BlogsComponent},
       {path:"tiny-mce", component:MceEditorComponent},
+      {path:'about-us',component:AboutUsComponent},
+      {path:'privacy-policy',component:PrivacyPolicyComponent},
+      {path:'terms-conditions',component:TermsCondtionsComponent}
    
     ]
   },
@@ -57,7 +63,6 @@ const routes: Routes = [
   {path:"forgot-password",component:ForgetPasswordComponent},
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
-
   {path:"", redirectTo:"/login", pathMatch:"full"},
   {path:"**", redirectTo:"/dashboard", pathMatch:"full"},
 ];

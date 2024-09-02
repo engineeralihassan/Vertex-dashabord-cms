@@ -35,6 +35,7 @@
     padding: 10px;
     width: 95%;
     margin: auto;
+    cursor: pointer;
     p{
       margin-top: 0.3rem;
     }
@@ -102,5 +103,15 @@
  .body-wrapper{
   margin-top: 1.5rem;
   background-color:#eff1f3;
+ }
+ .new-notification{
+  color: green;
+  margin-left: 1rem;
+  margin-top: 5px;
+ }
+ .sidebar-menu-list-menu{
+  li{
+    cursor: pointer;
+  }
  }
  

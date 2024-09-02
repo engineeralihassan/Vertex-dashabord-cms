@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 interface sidebarMenu {
   link: string;
@@ -26,7 +27,7 @@ export class FullComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, private router:Router) { }
 
   routerActive: string = "activelink";
 
@@ -71,16 +72,7 @@ export class FullComponent {
       icon: "voicemail",
       menu: "Case Studies",
     },
-    {
-      link: "/chips",
-      icon: "slack",
-      menu: "Contact Us",
-    },
-    {
-      link: "/tabs",
-      icon: "list",
-      menu: "Other Pages",
-    },
+
     // {
     //   link: "/progress",
     //   icon: "bar-chart-2",
@@ -117,5 +109,9 @@ export class FullComponent {
     //   menu: "Slide Toggle",
     // },
   ]
+
+  navigation(route:string){
+    this.router.navigate([`/${route}`])
+  }
 
 }

@@ -1,0 +1,46 @@
+
+<mat-card>
+    <mat-card-content>
+<h1 mat-dialog-title>About Us</h1>
+
+
+            <mat-expansion-panel class="about-us">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Banner Section </mat-panel-title>
+                    <mat-panel-description> Click to edit update </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="tow-col-row">
+                    <mat-form-field class="cloumne" appearance="outline">
+                      <mat-label>Page Name </mat-label>
+                      <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+                    <mat-form-field class="cloumne" appearance="outline">
+                      <mat-label>Banner Title </mat-label>
+                      <input matInput placeholder="Placeholder">
+                    </mat-form-field>
+             
+                  </div>
+                  <div class="tow-col-row">
+                      <mat-form-field class="cloumne" appearance="outline">
+                          <mat-label>Banner description</mat-label>
+                          <input matInput placeholder="Placeholder">
+                        </mat-form-field>
+                
+                      <div class="form-file0feild cloumne">
+                        <p>Uplaod Banner Image</p>
+                        <input type="file" placeholder="Upload Feature Image">
+                      </div>
+                     
+                   
+                  </div>
+            </mat-expansion-panel>
+
+
+
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button class="save-btn" mat-button [mat-dialog-close]="closeMode" cdkFocusInitial (click)="getContentFromChild()"  >Save</button>
+            </mat-dialog-actions>
+        </mat-card-content>
+        </mat-card>
+

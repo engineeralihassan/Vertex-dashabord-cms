@@ -1,0 +1,164 @@
+.save-btn{
+    background-color: hsl(0, 100%, 27%);
+    color: #fff;
+}
+.editor-tabs-container{
+    min-width: 80vw;
+    min-height: 75vh;
+    max-height: 85vh;
+    overflow-y: auto;
+
+}
+@media(max-width:600px){
+    .editor-tabs-container{
+        min-width: 95vw;
+        min-height: 75vh;
+        max-height: 75vh;
+
+    }
+}
+.success-snackbar{
+    background-color: green !important;
+    color: #ffff;
+}
+.mat-typography{
+    min-height: 70vh;
+}
+
+table {
+    max-width: 90% !important;
+    border: 2px solid red;
+  }
+  
+  .mat-mdc-text-field-wrapper {
+    font-size: 14px;
+    width: 90%;
+    background-color: #fff !important;
+    border: 2px solid red !important;
+
+
+  }
+ 
+  .blogs-filter-input{
+    
+  }
+  
+  td, th {
+    width:auto;
+  }
+  td{
+    img{
+        width: 7rem;
+        height: 7rem;
+        border-radius: 5px;
+
+    }
+  }
+  .table-actions-row{
+  button:not(:last-child){
+   margin-right: 0.5rem;
+  }
+
+  }
+
+  .blog-data-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+margin-top: 2rem;
+.tow-col-row{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    .cloumne{
+        width:49%;
+    }
+
+}
+  }
+
+  input[type="file"] {
+    position: relative;
+  }
+  
+  input[type="file"]::file-selector-button {
+    width: 136px;
+    color: transparent;
+  }
+  
+  /* Faked label styles and icon */
+  input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 10px;
+    left: 16px;
+    height: 20px;
+    width: 20px;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+  }
+  
+  input[type="file"]::after {
+    position: absolute;
+    pointer-events: none;
+    top: 11px;
+    left: 40px;
+    color: #0964b0;
+    content: "Upload File";
+  }
+
+  
+  /* ------- From Step 1 ------- */
+  
+  /* file upload button */
+  input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+  }
+  
+  /* file upload button hover state */
+  input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+  }
+  
+  /* file upload button active state */
+  input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+  }
+  .form-file0feild{
+margin-bottom: 1.5rem;
+border: 1px solid gray;
+padding: .5rem .6rem;
+border-radius: 3px;
+
+  }
+  .blog-content-heading{
+    margin: 2rem 0;
+  }
+  .sections-heading{
+    width: 100%;
+    text-align: left;
+    margin: 1rem 0;
+  }
+  .tow-col-row{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    .cloumne{
+        width:49%;
+    }
+
+}
