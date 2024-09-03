@@ -63,9 +63,9 @@ gap: 1rem}
     
   }
   
-  td, th {
-    width:25%;
-  }
+  // td, th {
+  //   min-width:25%;
+  // }
   td{
     img{
         width: 7rem;
@@ -108,3 +108,21 @@ cursor: pointer;
   background-color: #ffff !important;
   border: 1px solid red !important;
 } 
+table{
+  max-width: 100%;
+  overflow-x: auto;
+  width: 100%;
+  
+  tr{
+
+    td{
+      min-width:200px ;
+      max-width: 200px;
+    }
+  }
+  }
+  .request-table-wrapper{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  } 
