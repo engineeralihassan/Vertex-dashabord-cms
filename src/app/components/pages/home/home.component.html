@@ -452,9 +452,116 @@
           </table>
         </div>
       </mat-expansion-panel>
+
+      <mat-expansion-panel class="about-us-section">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Solutions Section </mat-panel-title>
+          <mat-panel-description> Click to open </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="tow-col-row">
+          <mat-form-field class="cloumne" appearance="outline">
+            <mat-label>Section Top Heading </mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+  
+          <mat-form-field class="cloumne" appearance="outline">
+            <mat-label>Section Heading </mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+          <mat-form-field class="cloumne" appearance="outline">
+            <mat-label>Section descriptions </mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+        </div>
+        <hr />
+        <div class="years-story-header">
+          <h3>Stats</h3>
+          <button class="save-btn" mat-button (click)="toggleForm()">
+            {{ isShowForm ? "Cancel" : " + Add New" }}
+          </button>
+        </div>
+  
+        <div
+          class="tow-col-row add-new-story-section"
+          [ngClass]="{ 'show-form': isShowForm }"
+        >
+          <mat-form-field class="cloumne" appearance="outline">
+            <mat-label>Product Heading</mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+          <mat-form-field class="cloumne" appearance="outline">
+            <mat-label>Product Description</mat-label>
+            <input matInput placeholder="Placeholder" />
+          </mat-form-field>
+          <div class="form-file0feild cloumne">
+            <p>Uplaod product Image</p>
+            <input type="file" placeholder="Upload Feature Image" />
+          </div>
+  
+          <button class="save-btn add-year-image" mat-button>Save</button>
+        </div>
+        <hr />
+  
+  
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <!-- ID Column -->
+            <ng-container matColumnDef="img">
+              <th mat-header-cell *matHeaderCellDef>Image</th>
+              <td mat-cell *matCellDef="let row">
+                <img [src]="row.img" alt="blog image" />
+              </td>
+            </ng-container>
+  
+            <!-- Progress Column -->
+            <ng-container matColumnDef="year">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Heading</th>
+              <td mat-cell *matCellDef="let row">{{ row.year }}</td>
+            </ng-container>
+  
+            <!-- Name Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Description
+              </th>
+              <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+            </ng-container>
+  
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+              <td mat-cell *matCellDef="let row" class="table-actions-row">
+                <div class="action-icons-wrapper">
+                  <mat-icon
+                    matTooltip="Edit Blog"
+                    matTooltipPosition="above"
+                    class="action-icon1"
+                    aria-hidden="false"
+                    aria-label="Example home icon"
+                    fontIcon="edit"
+                  ></mat-icon>
+  
+
+       
+                </div>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+            <!-- Row shown when there is no matching data.
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                        </tr> -->
+          </table>
+        </div>
+      </mat-expansion-panel>
+
+
       <mat-expansion-panel class="about-us-section">
           <mat-expansion-panel-header>
-            <mat-panel-title>Clients Section </mat-panel-title>
+            <mat-panel-title>Case Studies </mat-panel-title>
             <mat-panel-description> Click to open </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="tow-col-row">
@@ -467,10 +574,7 @@
               <mat-label>Section Heading </mat-label>
               <input matInput placeholder="Placeholder" />
             </mat-form-field>
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Section descriptions </mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
+
           </div>
           <hr />
           <div class="years-story-header">
@@ -485,7 +589,7 @@
             [ngClass]="{ 'show-form': isShowForm }"
           >
             <div class="form-file0feild cloumne">
-              <p>Uplaod Client Image</p>
+              <p>Uplaod  Image</p>
               <input type="file" placeholder="Upload Feature Image" />
             </div>
     
@@ -494,187 +598,16 @@
           <hr />
     
            <div class="clients-logos-section">
-              <img src="data:image/png;base64,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" alt="client image">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABR1BMVEX///8AcLP7/f4AbLEAcrTg7PQqhL22zuQAd7d6rNHL3uxAi8Cgv9ve6fIAdLWlxd9encoAabC60+eQudjz+fzo9vrz9foApM0ATKIgY6z2/P0Au9np6/TF2ekAUKQAgLsAWKcAmMeJosva7/YAn8tOps4AisApaq8AlMWXq9AAr9MAs9XV8/jS1+jT3uzEzeIAwdxbz+Syxd9zk8OdyeGKwt2huNdFb7G53ux6uNii0+bN6PI9vdqs3Otbwt1Ixt93h7xXttZba64kyuGk4+8AO5t4frc9R52xttW/6vOR4u5ty+IAMJZ4mcZVgLpHlcVVksNdqtB2wNxzoctUdrSZ1uhrtteGqM5BZKxKh76x1eeAlcM+fbhgf7mcqM1kyOCq6vM+V6aGy+IAJ5NNVaOAjL47QJp7fbTCw9xZZKmPk8B11uhETqA0sSajAAAQ50lEQVR4nO2d+V/aWBeHD2ELuyxhiSDIviM7GFCptiNSQBBcEDfedl6n9P//+T03oLWtWqfjSPS9z6eWJQm9355zz3KTIACFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUCiU/zNytkWP4N/Gn1/0CP5t2iupRQ/hX6aTKy96CP8ykVgnvegxPAu2XrhruG+DyxV7EzNx5B2BUmW6Z4sz13a5X3w8zw3X7dnA1NUpDn7axDhjkZJ/AWN6VgpeDyjDPc6mMeqUP2zz+Fztkut158RA9BD4XtgAhq6KZY0/TMZ8xO8v+0uLGdrzUIwKMAoXgFsKa8HEsqrvttp9Pv8gn/MtZmzPQSVaRSP2GKh6LcBrdEZWob+7veRzlQelfD6zqAH+I7hRaPWQsx1GDTgTC2DTeE1gULGyu1Mx4uvk8/5y6nhho/xt+ErDURSEYmh1BJ5oleGrYcwVJp3XaNz/tpfa5/J12uVY6ey1lW6BfrAvVPqrhxVhVI32OHTSAvBWVsPZ9o1y9e1+ZZfLVS7jPEwPFjjav08l3qgIqLFSKa6GiqPKqIqRxrCETgqWfVZhlN8kB4vP5eoMyrH8aab8ikq3QKIRIBorh6H++no1FOoVR9pRt6sFg8arMYBGIZsnfoaY0Ofq+MuZQeb1GHHoELh4g6s7+pX1XrA4KVZ70VC1WFGaVF0LMJYlVm40W1CetjR2EXz5sj93bDi+t2qVHlxtgxk6AgFHn5sEi+ilvcPqYTUU7Xa7Vk5p0qk0WtDKFfKTsaKdK4kKXeWzTCSzlXodRqzHm4H4hOs3AuuOdeEwtL4eCh32QqLCrq5rUtq0+n2VUWa05krt8Tgyk+iPDdLH9uNXEE652gXXSiSHjnrdMak0QuvF4GHxcBUFhgndpQO0ocnAAM7Eo5xF3Ub7uSK+Qayc8+/609LPicNEsx6v1+OTerw/bDj6jWhwps0rwiJLJv0RpsSxjD0xdvxtVyTiGvg6p2fpFbuT2dpdtILHCdRazVqrXrsYNhr9uMMRXF2NrkZ71cJIUNo4pdJgMHj0XVamsWgNBvl+To9uGonkMdK0XaWYf3f3lHlvX7SIx5guN1u1nY2NSS1RQ3nB1WAwxIXWf9zNptUs7etOWPNBSZ1uR8YDV8RVzmd89mNwujNXixj500iuTXeWh61aqxZPOJCNYIUP8pXQQ/tbzOOxQrZfHrc7aMVYLJ/aymFt6j97yUH/HaabO5vZaW2zFo/HHRsbfX4yhP46rAYeOsBuHqvVuXEn38n7XINSOX3mXoFTP5ydv+Swn0xybW+6Nt3crKGD1uMBPg5MEPhVWD98+JgT80Gs1D45OSpHfO3YwO2zn57DVQqcUkwZ0+2dtWl2M7vcrNVhQwC0X70P6xMIcg8fdGQe7++jwHbJ5fOflWK5PDjT9vd290fJRZvk9nS6vbe2M7yA5gVwCYA4Bw0BHNyo/8hhHp8+7UGB7ZgvEnMZfHBsSF/B9TH5Iy0ut5vb0+QaB8s8XAhQaQEXB94BAcejJgSl72AsK3ViGewPz/yZrUzKB/5T2DqHrS8vNvinMN3mt5uQbUJzCpBgYFKHZguEBj6pP2ZCANlJSR1RlyLqlbwrlXf74DQmzsM0/CGlqbiXhcss8GsotYk1G0AtQERO1tFJHzUhhhqsTC3jNpR8+YHBBVslcNrdTkg7wS2hxM9tA2STkNwE2EySaQhxnsSaRiDQmEweP1a5LzuRechqYsef8ZdsK0xuQPz09DPsvnuZ4T+BS3TNbU58wJk4d9S4DRwwaTh+ebRN7OrLnY7njHFC7BTKGeKnVxl4J5kCdXoJPJpxZw+YZSy8h6KjxiHQAIfjcR+9hfG1B3Yf4ydOanBCijgp2D9K5UQGeihx1J0d4InCOiQ3SL6oT+rBxoPlzPcYVtrtVKyERiydwudzEky/fIHMp3934E8GPZQo3JspnFbIVBQ2YKPp4CuOp2nMdDqZtt0Fp2hENzYXDGb89yn4IJHqDRUm7yhskkxRn0B8Y4gbKw5Hv/LLMy65WMTug7OU+xhyW3B+CrsfIHUFzJ/S8NO5Dede2moSea2KEIzPNnOV6mqw8PiELOUiTMeQycMAw4wb7UiCDbpq5usLjP/XbCd/UIjBpsZt1CcOLNtmcIVo6McTancp5fypXAxWIFUmRrw+g9RXsP/HDh8kEU8x0tyJpaiwVYF4AC3ICA2Ho1FcF4iXVsKjhz8iF8uV3GXIZ8CHFrQTOw6uiasSlYsHswWzzcPO9EbhhcDF47MIw3NCvXi4Gj2sAB+tPPgRan86DytM6gxifjj3w/UWSRekcjv/8FIyHmHvUpyLJNWv8URhjRtuJGpDgf+2j/YwXGHC2oc+wpO3ixZ0MpgwmPcM/OEmSSP1CSRRn17uiXMxmcWqjYOLJiQgwUFg2HDEG4R+YSQwYAtVbeGHFrTRghEoxYjIswyc7opG/IOBd9eSSIrEeCTrr4l16UWSTzQ3xA18IBBQBoTKerEXDWmhGgqEHwip6Q6U3YYBYDTNoDZsDv+ww+ddSP8J8GnxRhST4aXYW6DCzYCw7BgGbqUwPEMehFCIH4VH4fs/wtCBTpo5ZuzHwFzZ4R3Ovy/g/gjEiKk/XkbGI3DzQDpTuMxP6sKkFo9v9BuNOFlxCwaDoWIAUJ/Q7fXu/QhU2M5A2QDlNHzOwPVnsGOg+XAN6U+SMOK3MIPOKk5ChBMqQoDjxGhjU66vhpRMqCeEvfdGG/TSWAlOM+RvdFMbkZeBFPZPX9OQWXwbNU/5GGY2k7bl1vR2A+aKyvqkKGZEIdpDNy2Eu/d9AkYajDP4B+VhNMX6DTKYJrAJ3v0MsPjabd4+kUmYbLYuarXaxqQ+bKGPxhuT9dFoVDhcDZGLTYrKbsh7X22TaWPSh8wpYHUK79yw60d5DHzZBTvOwi8LL2wuZ5MQXXSNn9aB4QKB+nBYCYgFN8+JriqEMOEXw6Mqq7nnE3JHkPMDBlNmBYizptEx/3JDCu34yQ3X/31hQT/RzIpzERUu25aZ27e5Cvb4GGVCIaxpBOB64RHXW9Io7pmJpRJRiJEUjtExsWdyogGvwf1JnI/uhUdTfrZQk03ya9nNOtIUmiSa9uuBG72VXrRgs1XDo1HXe89MzKeISKxMMS3ecVE3thYfUqLQxXKrMJnld4bDyaSF8zDAz6wYImYsCmDD9kJAjYUl1vrTJ0TspJzBfA8YZvwo7QpIUiTBVBJeSlwUG99Nbrrz7T1StTX6IwEnIRMYhcJVAwR6YbVyqes1/uinpTwYXAwMMIKeAektiBk/MnB+jpFGfFg0aEBUuNZcszE8QRjW4rVhgPRP9UK/XxxxwIxC0aqSs4YLBa9X933TX4owjAv9FNUdGyCHD9g9kWzx1T0z4+JTfrY5V7hMSCREdVwdu8NDLHCESjFE2idm1A0XOFPYq2LvTkUmPwYmkgPDio2slIrq3olOSqYhFqf2P5kH/+WXYkoUkvL0BkZoxeMTgVQzQqVCOuBKNRwq2PhCeEm75PWynttdLa4SKF05cK+gwXxATh/CVRrS8zyIHfC1BFrEvR10VJQ5g6vXEhsVHgLrpMXvF4uN4Gq1YgNlodstKLVLKlQom09Fw8mJGzzoom7ygyLTKwzsboklN4Mzkah7J4FrMrHuzu4sT6fT7Gattpwgxmu2HI0hiac2Di1oq1Sj0aqHsWHVptZ2WS+7RI4z7JMV/SOMpHYfynDhz0oayKUKaQym51iw/ZUC5j+Ld1KicJtpEpIcKbubG46WALwwic8SfrBYwVjjqYajBaXS6rVaWVaxb1CfjNWoUn6EdSkKg3IJYCuGRSk651VGXEp0Y394LoXzbDt73O0kZJoXiQusYIYJkvHF1oLhRtVgNFQI4JNu2Ko16VQoUXWEHT9zJEdtORc+PcMJWBpgjYqVzfW7mQnJUtvi624g/e92k08mmzvT6WaCWA/lDX9Y7LYJhV64a1XaLN2uScOyxrHe47Gaj9AFY+imkMd0n8ZUaHe60U/x56NdNGHmr8Vo+p5pM7u9vZmd7tSbSfTRWmL4wGqFsrDk7Wm1Gp0OJcqOjvSozz0mN8t02vgMxUEZzfYZU/yX85kJJZAMQaxpbki2Eq3kY/syWo1KY9lHN1WcWNUe9YEZJyPTQRe1kUgTw3yfwjBDFhPdWJ2mJLHqPcuEfLLZnC5vNvlf7Q6MRdfV6ZZk8gP90ZGamDGCAQYwMZLzaiBea4LZQjQheVw829m97PbaWjY7fYK8GVqVSrUvk5+U1Om0uu3CnMFESnM//eyfhRqy0EZmogTgLi+b3FO1zWH2dUsKuVldauePyCXtbiKQIVmRXNZGQg38lZGKCX8TPWs9MJ8c5dJKuyHTJtrEjDgz4/ncjO8XPcp/hP1AYTa39e1Op9POkddlMhuv5maEj3MzvmrseoX8SG0gVZk91fYRmeSiPZISyVluieTCf4Zd7jvKR1w+lyufQ6HM2Ra+eYwxNEX88/0ruvviQZSufHp+ipBJx5zk/rxTLNfEU06kbnsDeHzjTrk87gzKkUEJ2xDmlNyPQC5rc3+UQFPxHOjNFrC53W7RkvaSk9wru0suTZTOFUP/lKMV1zjvj8Vi/i3fsZ8IPXei9c4Xf7ri2TgZp9OZHCLOSCZztcWQUCOFM/jPBBPxtXOptMGQTmViA+cWOVN8LZlLvp4F27iM1dvZ2dnW6a6YIFLH796QBQlMe5CZB07GfX169U4STeHzks77VnzHxz6n8/j0+k056HfY7G8kA/4fM2yEul3dSWfw6u7pfhp8YhLgOE6pVBoyV1JYJH12Nu+cm4NPr70zvIfL7N1XUjgd89xsf7fGuvgz288Ov/3dy9230Rvehfte4de3F03JhX/fuH5DrdMt0707L5xvYYXmR5i14e3zV/T1GH+LWuvm2dVbrb37jdljRrI3c/9jJiHSXDC+t2pCZD2sTufExe83i9K6dPTY3TUUCoVCoVBeOYzUl4OVJpPpZoxa0+wiYJvJ9P0Oc2abZsyvpdXvq1T71vkF4Aa9ZXa83iQh2SaZUX5zB6XePLszxiCXfdvB45LLZUajXG724isl7k6Y7cl4FTKVyqiYf/uu2ixeYQtKs1dCCpdY1njzhZ162Vyhgv22A2exWKxGlcdiIQZWGll8hojdvFVBvjzZdmDUibuqZXOFMpWEFKrYJePNPU33KiRoZbr5MyV7x7ygk4lubWNnX/kpSYVKljUovPMXT1FovKOQUc2/dHf+KEmFFtkSz8rmkeJNKrTK9De+9ve99FYhaxZDjSQV6mRa0CjmN239tg21WlGRFBUyMtZOPHX26rcVzpGiQnHoStk8fT1JIWsliF75k0KFTtyoYaWjUNSEAzV8ewW/UkgSvktMoT8pnG2UyySkcElG6qwD2axKe5JCoxbxiOfUfrZhl2zUqo2SUTgfomn+qyt+O5bOkeA8nA9Fq5j9zoM3GGlw4qgILCuO9LcVMrOSQYIKNez8e5AVYtvz2146D1USVKiTzU74WWVizn97VRvHymYj8cwU3IzQo/j+d5E8pFCsiEDKvcXtwLmZ7yllLEkbSpXC+sCOYrbwEERpGrE/ZA6Ms/8R6Sm0mm86Q5VZHLFJLpN5WblC98MAteYbo972+GIZxKgUcq9XpjDOnF16Pb5Fb/jhmfYAI6vup1UWpf5mGeB2nWb2BqPX4QGaec64WaexS2qd5if+9tikLIZCoVAoFAqFQqFQKBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUF6Q/wF18KbKxgbQkgAAAABJRU5ErkJggg==" alt="client image">
-              <img src="data:image/png;base64,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" alt="client image">
+     
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkXJJ8CPFt5p0oOlrRHRW6Y_dTjNmlXKbKwg&s" alt="client image">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkXJJ8CPFt5p0oOlrRHRW6Y_dTjNmlXKbKwg&s" alt="client image">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkXJJ8CPFt5p0oOlrRHRW6Y_dTjNmlXKbKwg&s" alt="client image">
   
            </div>
         </mat-expansion-panel>
-  
         <mat-expansion-panel class="about-us-section">
           <mat-expansion-panel-header>
-            <mat-panel-title>Vertex Section </mat-panel-title>
-            <mat-panel-description> Click to open </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="tow-col-row">
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Section Top Heading </mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Section descriptions </mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-          </div>
-          <hr />
-          <div class="years-story-header">
-            <h3>Vertex Offices</h3>
-            <button class="save-btn" mat-button (click)="toggleForm()">
-              {{ isShowForm ? "Cancel" : " + Add New" }}
-            </button>
-          </div>
-    
-          <div
-            class="tow-col-row add-new-story-section"
-            [ngClass]="{ 'show-form': isShowForm }"
-          >
-          <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Country</mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Office Address (, seperated)</mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Map Address</mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-            <div class="form-file0feild cloumne">
-              <p>Uplaod  Image</p>
-              <input type="file" placeholder="Upload Feature Image" />
-            </div>
-    
-            <button class="save-btn add-year-image" mat-button>Save</button>
-          </div>
-          <hr />
-    
-    
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
-              <!-- ID Column -->
-              <ng-container matColumnDef="img">
-                <th mat-header-cell *matHeaderCellDef>Image</th>
-                <td mat-cell *matCellDef="let row">
-                  <img [src]="row.img" alt="blog image" />
-                </td>
-              </ng-container>
-  
-              
-    
-              <!-- Progress Column -->
-              <ng-container matColumnDef="year">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
-                <td mat-cell *matCellDef="let row">{{ row.year }}</td>
-              </ng-container>
-    
-              <!-- Name Column -->
-              <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Map Link
-                </th>
-                <td mat-cell *matCellDef="let row"><a href="">Map Link Address</a></td>
-              </ng-container>
-    
-              <!-- Fruit Column -->
-              <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-                <td mat-cell *matCellDef="let row" class="table-actions-row">
-                  <div class="action-icons-wrapper">
-                    <mat-icon
-                      matTooltip="Edit Blog"
-                      matTooltipPosition="above"
-                      class="action-icon1"
-                      aria-hidden="false"
-                      aria-label="Example home icon"
-                      fontIcon="edit"
-                    ></mat-icon>
-    
-                    <mat-icon
-                      matTooltip="Delete Blog"
-                      matTooltipPosition="above"
-                      class="action-icon"
-                      aria-hidden="false"
-                      aria-label="Example home icon"
-                      fontIcon="delete"
-                    ></mat-icon>
-                    <mat-icon
-                      matTooltip="Publish Blog"
-                      matTooltipPosition="above"
-                      class="action-icon3"
-                      aria-hidden="false"
-                      aria-label="Example home icon"
-                      fontIcon="publish"
-                    ></mat-icon>
-                  </div>
-                </td>
-              </ng-container>
-    
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    
-              <!-- Row shown when there is no matching data.
-                          <tr class="mat-row" *matNoDataRow>
-                            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                          </tr> -->
-            </table>
-          </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="about-us-section">
-          <mat-expansion-panel-header>
-            <mat-panel-title>Industries Section </mat-panel-title>
-            <mat-panel-description> Click to open </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="tow-col-row">
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Section Top Heading </mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-    
-            <mat-form-field class="cloumne" appearance="outline">
-              <mat-label>Section description </mat-label>
-              <input matInput placeholder="Placeholder" />
-            </mat-form-field>
-          </div>
-          <hr />
-          <div class="years-story-header">
-            <h3>Recognized Industries</h3>
-            <button class="save-btn" mat-button (click)="toggleForm()">
-              {{ isShowForm ? "Cancel" : " + Add New" }}
-            </button>
-          </div>
-    
-          <div
-            class="tow-col-row add-new-story-section"
-            [ngClass]="{ 'show-form': isShowForm }"
-          >
-            <div class="form-file0feild cloumne">
-              <p>Uplaod  Image</p>
-              <input type="file" placeholder="Upload Feature Image" />
-            </div>
-    
-            <button class="save-btn add-year-image" mat-button>Save</button>
-          </div>
-          <hr />
-    
-         <div class="clients-logos-section">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-          <img src="https://picsum.photos/600/400?image=1083" alt="">
-  
-         </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="about-us-section">
-          <mat-expansion-panel-header>
-            <mat-panel-title>CTA1 Section </mat-panel-title>
+            <mat-panel-title>CTA Section </mat-panel-title>
             <mat-panel-description> Click to open </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="tow-col-row">
@@ -690,7 +623,7 @@
         </mat-expansion-panel>
         <mat-expansion-panel class="about-us-section">
           <mat-expansion-panel-header>
-            <mat-panel-title>CTA2 Section </mat-panel-title>
+            <mat-panel-title>CTA_2 Section </mat-panel-title>
             <mat-panel-description> Click to open </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="tow-col-row">
