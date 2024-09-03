@@ -1,0 +1,13 @@
+.loader-spinner-editor{
+    width: 100%;
+    min-height: 26rem;
+   max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffff;
+}
+
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke:hsl(0, 100%, 27%) !important;
+}

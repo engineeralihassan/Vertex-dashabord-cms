@@ -1,13 +1,7 @@
-<mat-card *ngIf="isLoading">
-  <mat-card-content>
-
-<div  class="loader">
-
-  <mat-spinner></mat-spinner>
-
+<div *ngIf="isLoading">
+  <app-loader></app-loader>
 </div>
-</mat-card-content>
-</mat-card>
+
 
 <div>
   <editor

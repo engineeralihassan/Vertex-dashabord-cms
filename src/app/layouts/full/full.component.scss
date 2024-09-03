@@ -107,6 +107,7 @@
  .body-wrapper{
   margin-top: 1.5rem;
   background-color:#eff1f3;
+  min-height: calc(100vh - 168px);
  }
  .text-indigo{
   color: hsl(0, 100%, 27%);

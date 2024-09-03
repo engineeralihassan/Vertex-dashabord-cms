@@ -24,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoaderComponent } from './loader/loader.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
