@@ -28,6 +28,7 @@ import { AboutUsComponent } from './components/pages/about-us/about-us.component
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
 import { TermsCondtionsComponent } from './components/pages/terms-condtions/terms-condtions.component';
 import { OtherPagesComponent } from './components/pages/other-pages/other-pages.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,8 @@ const routes: Routes = [
       {path:'about-us',component:AboutUsComponent},
       {path:'privacy-policy',component:PrivacyPolicyComponent},
       {path:'terms-conditions',component:TermsCondtionsComponent},
-      {path:'requests-data/:table',component:OtherPagesComponent}
+      {path:'requests-data/:table',component:OtherPagesComponent},
+      {path:'home',component:HomeComponent}
 
    
     ]
