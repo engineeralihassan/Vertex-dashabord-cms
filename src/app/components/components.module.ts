@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ConfirmationAlertComponent } from './confirmation-alert/confirmation-alert.component';
+import { MatDialogActions } from '@angular/material/dialog';
 
 
 
@@ -57,6 +59,7 @@ import { ProfileComponent } from './profile/profile.component';
     GridListComponent,
     TooltipsComponent,
     FormsModule,
+
   ],
   exports: [
     AlertsComponent,
