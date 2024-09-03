@@ -28,6 +28,7 @@
   cursor: pointer;
 }
 
+
 .notification-list{
 
   li{
@@ -122,4 +123,8 @@
     cursor: pointer;
   }
  }
+ .btn{
+  background-color: hsl(0, 100%, 27%) !important;
+  color: #ffff;
+}
  
