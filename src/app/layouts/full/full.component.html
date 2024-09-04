@@ -178,22 +178,13 @@
         <mat-menu #menu1="matMenu" class="notifications__container">
         
         <ul class="notification-list">
-          <li><strong>This is the notification message</strong>
+          <li *ngFor="let item of [1,2,3,4,5,6,7]" (click)="navigation('notifications','notifications')"><strong>This is the notification message</strong>
           <p>12 april 2021     <i-feather
             name="{{ 'bell' }}"
             class="mt-3 new-notification"
           ></i-feather></p>
         </li>
-          <li><strong>This is the notification message</strong>
-            <p>12 april 2021</p></li>
-            <li><strong>This is the notification message</strong>
-              <p>12 april 2021</p></li>
-              <li><strong>This is the notification message</strong>
-                <p>12 april 2021</p></li>
-                <li><strong>This is the notification message</strong>
-                  <p>12 april 2021</p></li>
-                  <li><strong>This is the notification message</strong>
-                    <p>12 april 2021</p></li>
+  
          
          
         </ul>
