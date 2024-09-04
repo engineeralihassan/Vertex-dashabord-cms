@@ -1,0 +1,64 @@
+.animated-background {
+  width: 90%;
+  min-height:90vh;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+
+}
+.box{
+    min-height: 11rem;
+    flex-basis: 30%;
+    border-radius: 1rem;
+    background-color: #e0e0e7;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #d7d8db), color-stop(.4, #f6f7f8), to(#f6f7f8));
+  background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.table-loader{
+    padding: 2rem;
+    background-color: #d2cbcb;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 30rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background-color: #e0e0e7;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #d7d8db), color-stop(.4, #f6f7f8), to(#f6f7f8));
+  background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -490px 0
+    }
+    100%{
+        background-position: 490px 0
+    }
+}
+
+.animated-background {
+    position: relative;
+}
+

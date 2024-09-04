@@ -31,6 +31,7 @@ import { OtherPagesComponent } from './components/pages/other-pages/other-pages.
 import { HomeComponent } from './components/pages/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { LoaderShinnerComponent } from './components/loader-shinner/loader-shinner.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,8 @@ const routes: Routes = [
       {path:'requests-data/:table',component:OtherPagesComponent},
       {path:'home',component:HomeComponent},
       {path:'profile-settings',component:ProfileComponent},
-      {path:'notifications',component:NotificationsComponent}
+      {path:'notifications',component:NotificationsComponent},
+      {path:'loader',component:LoaderShinnerComponent}
 
    
     ]
