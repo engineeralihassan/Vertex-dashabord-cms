@@ -30,6 +30,7 @@ import { TermsCondtionsComponent } from './components/pages/terms-condtions/term
 import { OtherPagesComponent } from './components/pages/other-pages/other-pages.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,8 @@ const routes: Routes = [
       {path:'terms-conditions',component:TermsCondtionsComponent},
       {path:'requests-data/:table',component:OtherPagesComponent},
       {path:'home',component:HomeComponent},
-      {path:'profile-settings',component:ProfileComponent}
+      {path:'profile-settings',component:ProfileComponent},
+      {path:'notifications',component:NotificationsComponent}
 
    
     ]

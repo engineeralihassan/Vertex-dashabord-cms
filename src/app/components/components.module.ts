@@ -28,6 +28,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ConfirmationAlertComponent } from './confirmation-alert/confirmation-alert.component';
 import { MatDialogActions } from '@angular/material/dialog';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
