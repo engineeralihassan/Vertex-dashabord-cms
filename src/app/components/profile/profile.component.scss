@@ -131,6 +131,18 @@ margin-top: 2rem;
     flex-wrap: wrap;
     .cloumne{
         width:46%;
+        .input-container-section{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 10px;
+          img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit:cover;
+          }
+        }
     }
 
 }
