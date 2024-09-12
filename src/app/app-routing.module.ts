@@ -32,6 +32,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { LoaderShinnerComponent } from './components/loader-shinner/loader-shinner.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,7 @@ const routes: Routes = [
    
     ]
   },
+  {path:"update-password",component:UpdatePasswordComponent},
   {path:"reset-password",component:ResetPasswordComponent},
   {path:"forgot-password",component:ForgetPasswordComponent},
   {path:"login",component:LoginComponent},

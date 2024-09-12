@@ -24,12 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { LoaderComponent } from './loader/loader.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ConfirmationAlertComponent } from './confirmation-alert/confirmation-alert.component';
-import { MatDialogActions } from '@angular/material/dialog';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { LoaderShinnerComponent } from './loader-shinner/loader-shinner.component';
+
 
 
 
