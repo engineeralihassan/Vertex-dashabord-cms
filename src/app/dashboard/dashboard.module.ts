@@ -8,6 +8,7 @@ import { ProductComponent } from './dashboard-components/product/product.compone
 import { CardsComponent } from './dashboard-components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,7 +25,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     CommonModule,
     DemoFlexyModule,
     FormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    RouterModule
   ],
   exports: [
     DashboardComponent,

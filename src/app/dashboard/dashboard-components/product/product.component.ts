@@ -4,17 +4,21 @@ export interface PeriodicElement {
   id: number;
   name: string;
   email: string;
-  company: string;
-  services: string;
-  help: string;
-  status:string
+  photo: string;
+  department:string
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, name: 'Deep Javiya', services: 'Frontend Devloper', company: 'Flexy Angular', status: 'Low', help: 'badge-info', email: '$3.9k' },
-  { id: 2, name: 'Nirav Joshi', services: 'Project Manager', company: 'Hosting Press HTML', status: 'Medium', help: 'badge-primary', email: '$24.5k' },
-  { id: 3, name: 'Sunil Joshi', services: 'Web Designer', company: 'Elite Admin', status: 'High', help: 'badge-danger', email: '$12.8k' },
-  { id: 4, name: 'Maruti Makwana', services: 'Backend Devloper', company: 'Material Pro', status: 'Critical', help: 'badge-success', email: '$2.4k' },
+  { id: 1, photo:'', name: 'Tayyab junaid', department: 'Quality assurance', email: 'ali.hassan@vertexitsol.com' },
+  { id: 2, photo:'', name: 'Saad Qaisar',   department: 'Devloper', email: 'ali.hassan@vertexitsol.com' },
+  { id: 3, photo:'', name: 'Ummer Huzaifa', department: 'Sales ', email: 'ali.hassan@vertexitsol.com' },
+  { id: 4, photo:'', name: 'Ali Hassan', department: 'Devloper', email: 'ali.hassan@vertexitsol.com' },
+  { id: 5, photo:'', name: 'Rabia Saeed', department: 'Product Manager', email: 'ali.hassan@vertexitsol.com' },
+  { id: 6, photo:'', name: 'Kabhisha Anwar', department: 'Digital Markeeting', email: 'ali.hassan@vertexitsol.com' },
+  { id: 7, photo:'', name: 'Saad ahmad', department: 'Digital Markeeting', email: 'ali.hassan@vertexitsol.com' },
+  { id: 8, photo:'', name: 'Shahrukh Javed', department: 'Digital Markeeting', email: 'ali.hassan@vertexitsol.com' },
+  { id: 9, photo:'', name: 'Amna Azam', department: 'Product Manager', email: 'ali.hassan@vertexitsol.com' },
+
 ];
 
 
@@ -25,7 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ProductComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'company', 'services','status'];
+  displayedColumns: string[] = ['id','photo', 'name', 'email', 'department'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }

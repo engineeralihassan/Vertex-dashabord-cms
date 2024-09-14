@@ -1,89 +1,28 @@
 <div class="ag-format-container">
   <div class="ag-courses_box">
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
+    <div class="ag-courses_item" *ngFor="let item of  statItems">
+      <a [routerLink]="item.link" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
         <div class="ag-courses-item_title">
-         Users
+         {{item.name}}
         </div>
 
         <div class="ag-courses-item_date-box">
-          #:
+          
           <span class="ag-courses-item_date">
-            112
+            {{item.count}}
           </span>
         </div>
       </a>
     </div>
 
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
-        <div class="ag-courses-item_bg"></div>
+ 
 
-        <div class="ag-courses-item_title">
-          Blogs
-        </div>
+ 
 
-        <div class="ag-courses-item_date-box">
-          #:
-          <span class="ag-courses-item_date">
-            65
-          </span>
-        </div>
-      </a>
-    </div>
 
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
-        <div class="ag-courses-item_bg"></div>
 
-        <div class="ag-courses-item_title">
-       Blog   Subscriptions
-        </div>
-
-        <div class="ag-courses-item_date-box">
-          #:
-          <span class="ag-courses-item_date">
-            34
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
-        <div class="ag-courses-item_bg"></div>
-
-        <div class="ag-courses-item_title">
-          Open Jobs
-        </div>
-
-        <div class="ag-courses-item_date-box">
-          #:
-          <span class="ag-courses-item_date">
-           03
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <div class="ag-courses_item">
-      <a href="#" class="ag-courses-item_link">
-        <div class="ag-courses-item_bg"></div>
-
-        <div class="ag-courses-item_title">
-          Contact Requests
-        </div>
-
-        <div class="ag-courses-item_date-box">
-          #:
-          <span class="ag-courses-item_date">
-           07
-          </span>
-        </div>
-      </a>
-    </div>
 
 
 
