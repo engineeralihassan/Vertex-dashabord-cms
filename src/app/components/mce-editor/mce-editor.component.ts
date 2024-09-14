@@ -26,7 +26,7 @@ export class MceEditorComponent {
     height: 500,
     menubar: true,
     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount  textcolor colorpicker',
-    toolbar: 'undo redo | blocks fontfamily fontsize styleselect fontselect | bold italic underline forecolor backcolor | link image media table mergetags textcolor color | addcomment showcomments | spellcheckdialog  | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    toolbar: 'undo redo | blocks fontfamily fontsize styleselect fontselect | bold italic underline forecolor backcolor | link imacdge media table mergetags textcolor color | addcomment showcomments | spellcheckdialog  | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
     setup: (editor:any) => {
       editor.on('init', () => {
         console.log("This is loading status",this.isLoading);
