@@ -101,7 +101,7 @@ function createNewUser(id: number): UserData {
     '.';
 
   return {
-    img: 'https://picsum.photos/600/400?image=1083',
+    img: 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
     title: name+' in your HTML, causing Angular to throw an ',
     description: Math.round(Math.random() * 100).toString()+FRUITS[Math.round(Math.random() * (FRUITS.length - 1))]+" in your HTML, causing Angular to throw an error when it tries to render a column with an empty ID.",
     author: name,

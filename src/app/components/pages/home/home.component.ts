@@ -121,7 +121,7 @@ function createNewUser(id: number): UserData {
     '.';
 let year=2018+1;
   return {
-    img: 'https://picsum.photos/600/400?image=1083',
+    img: 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
     year: year.toString(),
     description: Math.round(Math.random() * 100).toString()+FRUITS[Math.round(Math.random() * (FRUITS.length - 1))]+"Unique description text",
   };

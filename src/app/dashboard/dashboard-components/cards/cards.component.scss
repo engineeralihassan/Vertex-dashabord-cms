@@ -1,0 +1,14 @@
+.blog-card-image{
+    max-width: 100%;
+    min-height: 16rem;
+    max-height: 16rem;
+}
+.blog-card-description{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5; /* Adjust this based on your needs */
+    max-height: 3em; /* Line height * number of lines */
+}
