@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
   styleUrls: ['./forget-password.component.scss'],
-  standalone:true
+  imports:[RouterModule,RouterLink],
+  standalone:true,
 })
 export class ForgetPasswordComponent {
   constructor(private router:Router){}
