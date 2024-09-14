@@ -18,6 +18,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ComponentsModule } from './components/components.module';
     DashboardModule,
     ComponentsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
    
   ],
   providers: [],
