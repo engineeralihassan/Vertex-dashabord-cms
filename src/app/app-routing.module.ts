@@ -23,6 +23,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { LoaderShinnerComponent } from './components/loader-shinner/loader-shinner.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { ServicesComponent } from './components/pages/services/services.component';
+import { IndustriesComponent } from './components/pages/industries/industries.component';
+import { CompanyComponent } from './components/pages/company/company.component';
+import { CareersComponent } from './components/pages/careers/careers.component';
+import { CaseStudiesComponent } from './components/pages/case-studies/case-studies.component';
 
 const routes: Routes = [
   {
@@ -32,25 +37,125 @@ const routes: Routes = [
       {path:"", redirectTo:"/login", pathMatch:"full"},
       {path:"dashboard", component:DashboardComponent},
       {path:"forms", component:FormsComponent},
-      {path:"table", component:ProductComponent},
-      {path:"tooltip", component:TooltipsComponent},
-      {path:"blogs", component:BlogsComponent},
-      {path:"tiny-mce", component:MceEditorComponent},
-      {path:'about-us',component:AboutUsComponent},
-      {path:'privacy-policy',component:PrivacyPolicyComponent},
-      {path:'terms-conditions',component:TermsCondtionsComponent},
-      {path:'requests-data/:table',component:OtherPagesComponent},
+      {
+        path: "case-studies",
+        loadComponent: () =>
+          import('./components/pages/case-studies/case-studies.component').then(
+            (m) => m.CaseStudiesComponent
+          ),
+      },
+      {
+        path: "products",
+        loadComponent: () =>
+          import('./components/pages/products/products.component').then(
+            (m) => m.ProductsComponent
+          ),
+      },
+      {
+        path: "careers",
+        loadComponent: () =>
+          import('./components/pages/careers/careers.component').then(
+            (m) => m.CareersComponent
+          ),
+      },
+      {
+        path: "company",
+        loadComponent: () =>
+          import('./components/pages/company/company.component').then(
+            (m) => m.CompanyComponent
+          ),
+      },
+      {
+        path: "industries",
+        loadComponent: () =>
+          import('./components/pages/industries/industries.component').then(
+            (m) => m.IndustriesComponent
+          ),
+      },
+      {
+        path: "blogs",
+        loadComponent: () =>
+          import('./components/pages/blogs/blogs.component').then(
+            (m) => m.BlogsComponent
+          ),
+      },
+      {
+        path: "services",
+        loadComponent: () =>
+          import('./components/pages/services/services.component').then(
+            (m) => m.ServicesComponent
+          ),
+      },
+      {
+        path: 'about-us',
+        loadComponent: () =>
+          import('./components/pages/about-us/about-us.component').then(
+            (m) => m.AboutUsComponent
+          ),
+      },
+      {
+        path: 'privacy-policy',
+        loadComponent: () =>
+          import('./components/pages/privacy-policy/privacy-policy.component').then(
+            (m) => m.PrivacyPolicyComponent
+          ),
+      },
+      {
+        path: 'terms-conditions',
+        loadComponent: () =>
+          import('./components/pages/terms-condtions/terms-condtions.component').then(
+            (m) => m.TermsCondtionsComponent
+          ),
+      },
+      {
+        path: 'requests-data/:table',
+        loadComponent: () =>
+          import('./components/pages/other-pages/other-pages.component').then(
+            (m) => m.OtherPagesComponent
+          ),
+      },
       {path:'home',component:HomeComponent},
-      {path:'profile-settings',component:ProfileComponent},
-      {path:'notifications',component:NotificationsComponent},
-      {path:'loader',component:LoaderShinnerComponent}
+      {
+        path: 'profile-settings',
+        loadComponent: () =>
+          import('./components/profile/profile.component').then(
+            (m) => m.ProfileComponent
+          ),
+      },
+      {
+        path: 'notifications',
+        loadComponent: () =>
+          import('./components/notifications/notifications.component').then(
+            (m) => m.NotificationsComponent
+          ),
+      },
+
 
    
     ]
   },
-  {path:"update-password",component:UpdatePasswordComponent},
-  {path:"reset-password",component:ResetPasswordComponent},
-  {path:"forgot-password",component:ForgetPasswordComponent},
+  {
+    path: 'update-password',
+    loadComponent: () =>
+      import('./components/update-password/update-password.component').then(
+        (m) => m.UpdatePasswordComponent
+      ),
+  },
+  {
+    path: 'reset-password',
+    loadComponent: () =>
+      import('./components/reset-password/reset-password.component').then(
+        (m) => m.ResetPasswordComponent
+      ),
+  },
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./components/forget-password/forget-password.component').then(
+        (m) => m.ForgetPasswordComponent
+      ),
+  },
+
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
   {path:"", redirectTo:"/login", pathMatch:"full"},

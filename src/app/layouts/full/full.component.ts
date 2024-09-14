@@ -53,27 +53,27 @@ export class FullComponent {
       menu: "Dashboard",
     },
     {
-      link: "/button",
+      link: "/services",
       icon: "bar-chart-2",
       menu: "Services"
     },
     {
-      link: "/forms",
+      link: "/industries",
       icon: "layers",
       menu: "Industries",
     },
     {
-      link: "/alerts",
+      link: "/company",
       icon: "award",
       menu: "Company",
     },
     {
-      link: "/grid-list",
+      link: "/products",
       icon: "grid",
       menu: "Products",
     },
     {
-      link: "/menu",
+      link: "/careers",
       icon: "sliders",
       menu: "Careers",
     },
@@ -83,7 +83,7 @@ export class FullComponent {
       menu: "Blogs",
     },
     {
-      link: "/expansion",
+      link: "/case-studies",
       icon: "voicemail",
       menu: "Case Studies",
     },
