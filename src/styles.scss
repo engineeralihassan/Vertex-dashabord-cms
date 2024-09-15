@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.success-snackbar{
+   
+    .mdc-snackbar__surface{
+        background-color: #144803 !important;
+        .mat-mdc-snack-bar-action{
+            color: rgb(234, 183, 183) !important;
+        }
+    }
+}
+
+.error-snackbar{
+   
+    .mdc-snackbar__surface{
+        background-color: rgb(133, 5, 5) !important;
+        .mat-mdc-snack-bar-action{
+            color: rgb(239, 192, 192) !important;
+        }
+    }
+}

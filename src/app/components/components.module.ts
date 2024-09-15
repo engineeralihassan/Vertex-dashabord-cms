@@ -4,7 +4,7 @@ import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { FormsComponent } from './forms/forms.component';
 import { DemoFlexyModule } from '../demo-flexy-module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,6 +30,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsComponent,
     TooltipsComponent,
     FormsModule,
+    ReactiveFormsModule,
+    
 
   ],
   exports: [

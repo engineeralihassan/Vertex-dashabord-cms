@@ -3,20 +3,21 @@
         <div class="left">
         <img src="../../../assets/images/vertex-browser.svg" alt="">      
         </div>
-        <form  class="log-in" autocomplete="off"> 
+        <form  class="log-in" autocomplete="off" [formGroup]="userForm" (ngSubmit)="signUp()"> 
           <h4>Welcome to <span>Vertex</span></h4>
           <p> Register your account to access CMS</p>
           <div class="floating-label">
-            <input placeholder="Name" type="text" name="names" id="name" autocomplete="off">
-            <label for="email">Full Name:</label>
+            <input placeholder="Name" type="text" formControlName="name" id="name" autocomplete="off">
+            <label for="name">Full Name:</label>
             <div class="icon">
-    
             <img src="../../../assets/images/image3.png" alt="">
-    
             </div>
           </div>
+          <div *ngIf="f['name']?.dirty && f['name']?.invalid" class="error">
+            <small *ngIf="f['name']?.errors?.['required']">Name is required</small>
+          </div>
           <div class="floating-label">
-            <input placeholder="Email" type="email" name="email" id="name" autocomplete="off">
+            <input placeholder="Email" type="email" formControlName="email" id="name" autocomplete="off">
             <label for="email">Email:</label>
             <div class="icon">
     
@@ -32,8 +33,12 @@
     
             </div>
           </div>
+          <div *ngIf="f['email'].dirty && f['email'].invalid" class="error">
+            <small *ngIf="f['email']?.errors?.['required']">Email is required</small>
+            <small *ngIf="f['email']?.errors?.['email']">Enter a valid email</small>
+          </div>
           <div class="floating-label">
-            <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
+            <input placeholder="Password" type="password" formControlName="password" id="password" autocomplete="off">
             <label for="password">Password:</label>
             <div class="icon">
               
@@ -51,8 +56,14 @@
             </div>
             
           </div>
-          <button type="submit" (click)="login()">sign up</button>
-          <p class="login__form--login">Don't have an account <a (click)="signup()">Login</a></p>
+          <div *ngIf="f['password'].dirty && f['password'].invalid" class="error">
+            <small *ngIf="f['password']?.errors?.['required']">Password is required</small>
+            <small *ngIf="f['password']?.errors?.['minlength']">
+              Password must be at least 8 characters long
+            </small>
+          </div>
+          <button type="submit" [disabled]="userForm.invalid">{{isSubmitting ? 'submitting...': 'sign up'}}</button>
+          <p class="login__form--login">Don't have an account <a routerLink="/login">Login</a></p>
         </form>
        
       </div>

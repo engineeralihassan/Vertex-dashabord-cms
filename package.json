@@ -23,6 +23,7 @@
     "@tinymce/tinymce-angular": "^8.0.1",
     "angular-feather": "^6.5.0",
     "apexcharts": "^3.40.0",
+    "cors": "^2.8.5",
     "hammerjs": "^2.0.8",
     "ng-apexcharts": "^1.7.6",
     "rxjs": "~7.8.0",
