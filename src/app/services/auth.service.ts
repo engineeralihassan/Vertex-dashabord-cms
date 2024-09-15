@@ -21,6 +21,11 @@ export class AuthService {
     signUp(route:string,data:any) {
       return this.http.post(this.apiUrl+'/'+route,data);
     }
+
+    login(route:string,data:any) {
+      return this.http.post(this.apiUrl+'/'+route,data);
+    }
+  
   
     // Get all users
     getUsers() {
