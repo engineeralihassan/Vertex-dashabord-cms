@@ -52,6 +52,7 @@ export class LoginComponent {
           let  {_id,name,email,role,photo}=user.data.user;
           let newUser={id:_id,email,role,photo,name};
           localStorage.setItem('vertexcmsuser', JSON.stringify(newUser));
+          localStorage.setItem('vertexcmstoken',user.token);
           console.log("user is ::",_id,email,role,photo)
           this.isSubmitting = false;
           if (this.timeoutId) {
@@ -61,7 +62,7 @@ export class LoginComponent {
           // Start a new timeout
           this.timeoutId = setTimeout(() => {
             this.router.navigate(['/dashboard']);
-          }, 2000);
+          }, 100);
           this.openSnackBar(
             'Login successfully 🎉',
             'Close',

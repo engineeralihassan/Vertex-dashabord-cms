@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/components/confirmation-alert/confirmation-alert.component';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/services/auth.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 interface sidebarMenu {
   link: string;
@@ -22,12 +24,31 @@ export class FullComponent {
   mediaUrl:any=environment.userMediaUrl;
   search: boolean = false;
   hidden: boolean = false;
-  notifications: number = 3;
   othersPageActive: boolean = false;
   requestsPage: boolean = false;
   user:any;
   readonly dialog = inject(MatDialog);
+  notifications: any[] = [];
+  private notificationSubscription!: Subscription;
+
   ngOnInit() {
+    this.notificationSubscription = this.notificationService.getNotificationUpdates().subscribe(notifications => {
+      // Check if new notifications are received
+      console.log("New notifications",notifications);
+      if (this.notifications.length > this.notifications.length) {
+        this.playNotificationSound();
+        this.notifications = notifications;
+      }
+    });
+
+    this.notificationService.startPolling(12000); 
+
+
+
+    this.authService.getUser().subscribe((data:any)=>{
+      data.name=data?.name?.split(' ')[0];
+      this.user=data
+    })
     let storedUser = localStorage.getItem('vertexcmsuser');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
@@ -56,7 +77,9 @@ export class FullComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private authService:AuthService,
+    private notificationService: NotificationsService
   ) {}
 
   routerActive: string = 'activelink';
@@ -129,5 +152,29 @@ export class FullComponent {
       return 'Are you sure you actually want to leave? You have unsaved changes...';
     };
     // this.router.navigate(['/login']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.notificationSubscription) {
+      this.notificationSubscription.unsubscribe();
+    }
+  }
+
+  private playNotificationSound(): void {
+    const audio = new Audio('../../../assets/media/notification-bell.wav'); // Update path as necessary
+    audio.play();
+  }
+
+  formateDate(dateStr:any){
+const date = new Date(dateStr);
+const year = date.getFullYear();
+const month = date.getMonth() + 1; 
+const day = date.getDate();
+const hours = date.getHours();
+const minutes = date.getMinutes();
+
+// Format the date components
+const formattedDate = `${hours}:${minutes < 10 ? '0' : ''}${minutes}  ${day}/${month}/${year}`;
+return formattedDate;
   }
 }

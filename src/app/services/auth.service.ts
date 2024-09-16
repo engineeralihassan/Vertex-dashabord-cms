@@ -1,13 +1,15 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
- apiUrl:string=  environment.baseUrl+'users'
+ apiUrl:string=  environment.baseUrl+'users';
+ private userUpdate = new BehaviorSubject<any>({});
     // Optional headers if needed (e.g., for authentication)
     private httpOptions = {
       headers: new HttpHeaders({
@@ -16,7 +18,19 @@ export class AuthService {
       })
     };
   
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private router:Router) { }
+
+     updateUserStatus(user:any) {
+   
+        this.userUpdate.next(user);
+      
+       
+      
+    }
+  
+    getUser() {
+      return this.userUpdate.asObservable();
+    }
 
     signUp(route:string,data:any) {
       return this.http.post(this.apiUrl+'/'+route,data);
@@ -27,35 +41,23 @@ export class AuthService {
     }
 
     login(route:string,data:any) {
-      return this.http.post(this.apiUrl+'/'+route,data);
-    }
-    updateUser(route:string,data:any) {
-      return this.http.patch(this.apiUrl+'/'+route,data,{
-        withCredentials: true
+      return this.http.post(this.apiUrl+'/'+route,data,{
+        withCredentials: true,
       });
     }
-  
-    // Get all users
-    getUsers() {
-      return this.http.get(this.apiUrl);
+    updateUser(route:string,data:any) {
+      return this.http.patch(this.apiUrl+'/'+route,data,{ withCredentials: true });
     }
-  
-    // Get a single user by ID
-    getUserById(id: number) {
-      const url = `${this.apiUrl}/${id}`;
-      return this.http.get(url);
+    updatePassword(route:string,data:any) {
+      return this.http.patch(this.apiUrl+'/'+route,data,{ withCredentials: true });
     }
-  
-    // Add a new user (Create)
-    addUser(user:any) {
-      return this.http.post(this.apiUrl, user, this.httpOptions);
-    }
-  
+    
 
-  
-    // Delete a user
-    deleteUser(id: number): Observable<{}> {
-      const url = `${this.apiUrl}/${id}`;
-      return this.http.delete(url, this.httpOptions);
-    }
+
+logout(){
+  localStorage.removeItem('vertexcmstoken')
+  this.router.navigate(['/login']);
+}  
+
+ 
 }

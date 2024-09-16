@@ -75,7 +75,6 @@ export class ProfileComponent {
           let  {_id,name,email,role,photo}=user.data.user;
           let newUser={id:_id,email,role,photo,name};
           localStorage.setItem('vertexcmsuser', JSON.stringify(newUser));
-          console.log("user is ::",_id,email,role,photo)
           this.isSubmitting = false;
           if (this.timeoutId) {
             clearTimeout(this.timeoutId);
@@ -83,8 +82,9 @@ export class ProfileComponent {
       
           // Start a new timeout
           this.timeoutId = setTimeout(() => {
+            this.authService.updateUserStatus(newUser);
             this.router.navigate(['/dashboard']);
-          }, 2000);
+          }, 100);
           this.openSnackBar(
             'Profile updated successfully 🎉',
             'Close',

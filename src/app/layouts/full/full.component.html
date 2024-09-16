@@ -122,7 +122,7 @@
         ></i-feather>
       </button>
       <div class="ms-auto  d-flex align-items-end justify-content-center">
-        <button mat-icon-button class=" notification-btn  fs-16  pb-4 ps-4 pe-8 text-light-muted d-flex align-items-center justify-content-center" aria-label="Example icon button with a vertical three dot icon" [matMenuTriggerFor]="menu1" [matBadgeHidden]="hidden"  [matBadge]="notifications" matBadgePosition="before">
+        <button mat-icon-button class=" notification-btn  fs-16  pb-4 ps-4 pe-8 text-light-muted d-flex align-items-center justify-content-center" aria-label="Example icon button with a vertical three dot icon" [matMenuTriggerFor]="menu1" [matBadgeHidden]="hidden"  [matBadge]="notifications?.length" matBadgePosition="before"  *ngIf="notifications.length>0">
           <i-feather
               name="{{ 'bell' }}"
               class="notification-btn--icon feather-base mt-n3"
@@ -157,16 +157,16 @@
             </button>
           </div>
         </mat-menu>
-        <mat-menu #menu1="matMenu" class="notifications__container">
+        <mat-menu #menu1="matMenu" class="notifications__container" >
         
-        <ul class="notification-list">
-          <li *ngFor="let item of [1,2,3,4,5,6,7]" (click)="navigation('notifications','notifications')"><strong>This is the notification message</strong>
-          <p>12 april 2021     <i-feather
+        <ul class="notification-list" >
+          <li *ngFor="let item of notifications" (click)="navigation('notifications','notifications')"><strong>This is the notification message</strong>
+          <p>{{ formateDate( item.createdAt)}}    <i-feather
             name="{{ 'bell' }}"
             class="mt-3 new-notification"
           ></i-feather></p>
         </li>
-  
+ 
          
          
         </ul>
