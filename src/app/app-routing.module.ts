@@ -28,6 +28,7 @@ import { IndustriesComponent } from './components/pages/industries/industries.co
 import { CompanyComponent } from './components/pages/company/company.component';
 import { CareersComponent } from './components/pages/careers/careers.component';
 import { CaseStudiesComponent } from './components/pages/case-studies/case-studies.component';
+import { ErrorComponent } from './components/pages/error/error.component';
 
 const routes: Routes = [
   {
@@ -159,7 +160,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"sign-up",component:SignUpComponent},
   {path:"", redirectTo:"/login", pathMatch:"full"},
-  {path:"**", redirectTo:"/dashboard", pathMatch:"full"},
+  {path:"**", component:ErrorComponent},
 ];
 
 @NgModule({
