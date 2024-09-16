@@ -68,9 +68,7 @@ export class ForgetPasswordComponent {
           }
       
           // Start a new timeout
-          this.timeoutId = setTimeout(() => {
-            this.router.navigate(['/dashboard']);
-          }, 2000);
+
           this.openSnackBar(
             'we sent an reset password link to your account 🎉',
             'Close',

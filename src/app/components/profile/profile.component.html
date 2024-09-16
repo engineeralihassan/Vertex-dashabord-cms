@@ -6,7 +6,7 @@
             <div class="account-settings">
                 <div class="user-profile">
                     <div class="user-avatar">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                        <img [src]="mediaUrl+user.photo" alt="Maxwell Admin">
                     </div>
                     <h5 class="user-name">Ali Hassan</h5>
                     <h6 class="user-email">ali.hassan@vertexitsol.com</h6>
@@ -17,7 +17,7 @@
     </div>
     </div>
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
+    <form class="card h-100" [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="card-body">
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -28,24 +28,20 @@
                     <div class="tow-col-row">
                       <mat-form-field class="cloumne" appearance="outline">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="Placeholder">
+                        <input matInput placeholder="Name" formControlName="name">
                       </mat-form-field>
                       <mat-form-field class="cloumne" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Placeholder">
-                      </mat-form-field>
-                      <mat-form-field class="cloumne" appearance="outline">
-                        <mat-label>Role</mat-label>
-                        <mat-select>
-                          <mat-option value="one">Admin</mat-option>
-                          <mat-option value="two">User</mat-option>
-                        </mat-select>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <div *ngIf="userForm.get('email')?.dirty && userForm.get('email')?.invalid" class="error">
+                          <small *ngIf="userForm.get('email')?.errors?.['email']">Invalid email address</small>
+                        </div>
                       </mat-form-field>
                       <div class="form-file0feild cloumne">
-                        <p>Upload Feature File</p>
+                        <p>Upload Frofile Image</p>
                       <div class="input-container-section">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.pngng" alt="">
-                        <input type="file" placeholder="Upload Thumbnail">
+                        <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.pngng" alt=""> -->
+                        <input type="file" placeholder="Upload photo" (change)="onFileChange($event)" >
                       </div> 
                       </div>
                     </div>
@@ -56,13 +52,13 @@
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
-                        <button mat-button  >Cancel</button>
-                        <button mat-button  class="save-btn">update</button>
+                        <button mat-button (click)="navigation()" >Cancel</button>
+                        <button mat-button  class="save-btn" [disabled]="userForm.invalid" >update</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     </div>
     </div>
     </div>

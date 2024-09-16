@@ -22,10 +22,18 @@ export class AuthService {
       return this.http.post(this.apiUrl+'/'+route,data);
     }
 
+    resetPassword(route:any,token:any,data:any){
+      return this.http.patch(this.apiUrl+'/'+route+token,data);
+    }
+
     login(route:string,data:any) {
       return this.http.post(this.apiUrl+'/'+route,data);
     }
-  
+    updateUser(route:string,data:any) {
+      return this.http.patch(this.apiUrl+'/'+route,data,{
+        withCredentials: true
+      });
+    }
   
     // Get all users
     getUsers() {
@@ -43,11 +51,7 @@ export class AuthService {
       return this.http.post(this.apiUrl, user, this.httpOptions);
     }
   
-    // Update an existing user
-    updateUser(id: number, user:any) {
-      const url = `${this.apiUrl}/${id}`;
-      return this.http.put(url, user, this.httpOptions);
-    }
+
   
     // Delete a user
     deleteUser(id: number): Observable<{}> {

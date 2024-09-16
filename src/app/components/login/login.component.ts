@@ -49,6 +49,10 @@ export class LoginComponent {
       this.isSubmitting = true;
     this.subscription=  this.authService.login('login', this.userForm.value).subscribe(
         (user: any) => {
+          let  {_id,name,email,role,photo}=user.data.user;
+          let newUser={id:_id,email,role,photo,name};
+          localStorage.setItem('vertexcmsuser', JSON.stringify(newUser));
+          console.log("user is ::",_id,email,role,photo)
           this.isSubmitting = false;
           if (this.timeoutId) {
             clearTimeout(this.timeoutId);

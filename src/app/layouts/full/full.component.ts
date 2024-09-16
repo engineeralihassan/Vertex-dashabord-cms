@@ -5,7 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/components/confirmation-alert/confirmation-alert.component';
-
+import { environment } from 'src/environments/environment';
 
 interface sidebarMenu {
   link: string;
@@ -16,19 +16,30 @@ interface sidebarMenu {
 @Component({
   selector: 'app-full',
   templateUrl: './full.component.html',
-  styleUrls: ['./full.component.scss']
+  styleUrls: ['./full.component.scss'],
 })
 export class FullComponent {
-
+  mediaUrl:any=environment.userMediaUrl;
   search: boolean = false;
-  hidden:boolean=false;
-  notifications:number=3;
-  othersPageActive:boolean=false;
-  requestsPage:boolean=false;
+  hidden: boolean = false;
+  notifications: number = 3;
+  othersPageActive: boolean = false;
+  requestsPage: boolean = false;
+  user:any;
   readonly dialog = inject(MatDialog);
+  ngOnInit() {
+    let storedUser = localStorage.getItem('vertexcmsuser');
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+      this.user.name=this.user.name.split(' ')[0];
+      console.log(this.user.name);
+    }
+  }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    console.log("Heeeellelele")
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     this.dialog.open(ConfirmationAlertComponent, {
       width: '250px',
       enterAnimationDuration,
@@ -36,84 +47,87 @@ export class FullComponent {
     });
   }
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router:Router) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
 
-  routerActive: string = "activelink";
+  routerActive: string = 'activelink';
 
   sidebarMenu: sidebarMenu[] = [
     {
-      link: "/dashboard",
-      icon: "home",
-      menu: "Dashboard",
+      link: '/dashboard',
+      icon: 'home',
+      menu: 'Dashboard',
     },
     {
-      link: "/services",
-      icon: "bar-chart-2",
-      menu: "Services"
+      link: '/services',
+      icon: 'bar-chart-2',
+      menu: 'Services',
     },
     {
-      link: "/industries",
-      icon: "layers",
-      menu: "Industries",
+      link: '/industries',
+      icon: 'layers',
+      menu: 'Industries',
     },
     {
-      link: "/company",
-      icon: "award",
-      menu: "Company",
+      link: '/company',
+      icon: 'award',
+      menu: 'Company',
     },
     {
-      link: "/products",
-      icon: "grid",
-      menu: "Products",
+      link: '/products',
+      icon: 'grid',
+      menu: 'Products',
     },
     {
-      link: "/careers",
-      icon: "sliders",
-      menu: "Careers",
+      link: '/careers',
+      icon: 'sliders',
+      menu: 'Careers',
     },
     {
-      link: "/blogs",
-      icon: "book",
-      menu: "Blogs",
+      link: '/blogs',
+      icon: 'book',
+      menu: 'Blogs',
     },
     {
-      link: "/case-studies",
-      icon: "voicemail",
-      menu: "Case Studies",
+      link: '/case-studies',
+      icon: 'voicemail',
+      menu: 'Case Studies',
     },
-  ]
+  ];
 
-  navigation(route:string,page:string){
+  navigation(route: string, page: string) {
     this.router.navigate([`/${route}`]);
     this.activeLinkPage(page);
   }
-  deactiveLink(){
-   this.othersPageActive=false;
-   this.requestsPage=false;
+  deactiveLink() {
+    this.othersPageActive = false;
+    this.requestsPage = false;
   }
-  activeLinkPage(page:string){
-    if(page==='request'){
-      this.requestsPage=true;
-      this.othersPageActive=false;
-    }else{
-      this.othersPageActive=true;
-      this.requestsPage=false;
+  activeLinkPage(page: string) {
+    if (page === 'request') {
+      this.requestsPage = true;
+      this.othersPageActive = false;
+    } else {
+      this.othersPageActive = true;
+      this.requestsPage = false;
     }
   }
 
-  logout(){
-    window.onbeforeunload = function() {
+  logout() {
+    window.onbeforeunload = function () {
       // you may or may not want a condition here, e.g.
       // if (thereAreUnsavedChanges)
       return 'Are you sure you actually want to leave? You have unsaved changes...';
-  }
+    };
     // this.router.navigate(['/login']);
   }
-
 }
