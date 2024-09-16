@@ -41,7 +41,7 @@ export class FullComponent {
       }
     });
 
-    this.notificationService.startPolling(12000); 
+    this.notificationService.startPolling(120000); 
 
 
 
