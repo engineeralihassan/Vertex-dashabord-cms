@@ -12,25 +12,15 @@ export class NotificationsService {
 
   constructor(private http: HttpClient) { }
 
-  getNotifications(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
-      catchError(error => {
-        console.error('Error fetching notifications', error);
-        return of([]);
-      })
-    );
+  getAllNotifications(){
+    return this.http.get(this.apiUrl);
   }
+  markAllAsRead(){
+   return this.http.put(`${this.apiUrl}/mark-all-as-read`,{})
+  }
+  markRead(data:any){
+    return this.http.patch(`${this.apiUrl}`,data)
+   }
 
-  getNotificationUpdates(): Observable<any[]> {
-    return this.notificationSubject.asObservable();
-  }
 
-  startPolling(interval: number): void {
-    console.log("Send request of the notigfications");
-    setInterval(() => {
-      this.getNotifications().pipe(
-        tap((notifications:any) => this.notificationSubject.next(notifications))
-      ).subscribe();
-    }, interval);
-  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { ConfirmationAlertComponent } from 'src/app/components/confirmation-aler
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 interface sidebarMenu {
   link: string;
@@ -21,29 +22,33 @@ interface sidebarMenu {
   styleUrls: ['./full.component.scss'],
 })
 export class FullComponent {
+  @ViewChild('myButton', { static: false }) myButton!: ElementRef;
   mediaUrl:any=environment.userMediaUrl;
   search: boolean = false;
   hidden: boolean = false;
   othersPageActive: boolean = false;
   requestsPage: boolean = false;
   user:any;
+  notification: any;
   readonly dialog = inject(MatDialog);
-  notifications: any[] = [];
+  notifications: any[]=[];
   private notificationSubscription!: Subscription;
+  notificationCount=0
 
   ngOnInit() {
-    this.notificationSubscription = this.notificationService.getNotificationUpdates().subscribe(notifications => {
-      // Check if new notifications are received
-      console.log("New notifications",notifications);
-      if (this.notifications.length > this.notifications.length) {
-        this.playNotificationSound();
-        this.notifications = notifications;
-      }
-    });
-
-    this.notificationService.startPolling(120000); 
+  // Listen for notifications from the backend
+  this.socketService.onNewNotification().subscribe((data) => {
+    this.notification = data;
+    console.log(this.notification);
+    this.notifications.push(this.notification);
+    this.notificationCount=this.notifications.length;
+    this.playNotificationSound();
+  });
 
 
+
+
+ 
 
     this.authService.getUser().subscribe((data:any)=>{
       data.name=data?.name?.split(' ')[0];
@@ -55,6 +60,11 @@ export class FullComponent {
       this.user.name=this.user.name.split(' ')[0];
       console.log(this.user.name);
     }
+  }
+  ngAfterViewInit() {
+    setTimeout(()=>{
+      this.myButton.nativeElement.click();
+    },1000)
   }
 
   openDialog(
@@ -68,6 +78,10 @@ export class FullComponent {
     });
   }
 
+  readNotification(){
+    this.notificationCount=0;
+  }
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -79,7 +93,8 @@ export class FullComponent {
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     private authService:AuthService,
-    private notificationService: NotificationsService
+    private notificationService: NotificationsService,
+    private socketService: SocketService
   ) {}
 
   routerActive: string = 'activelink';
@@ -125,6 +140,11 @@ export class FullComponent {
       icon: 'voicemail',
       menu: 'Case Studies',
     },
+    {
+      link: '/notifications',
+      icon: 'bell',
+      menu: 'Notifications',
+    },
   ];
 
   navigation(route: string, page: string) {
@@ -157,6 +177,8 @@ export class FullComponent {
   ngOnDestroy(): void {
     if (this.notificationSubscription) {
       this.notificationSubscription.unsubscribe();
+      this.requestsPage = false;
+      this.othersPageActive = false;
     }
   }
 

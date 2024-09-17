@@ -1,64 +1,23 @@
-<div class="container">
-    <div class="app">
+
+
+<div class="container" >
+  <app-loader *ngIf="isLaoding"></app-loader>
+    <div class="app" *ngIf="!isLaoding">
       <div class="header">
-        <h2><span class="title">Notifications</span> <span class="unread-notification-number">3</span></h2>
-        <p>Mark all as read</p>
+        <h2><span class="title">Notifications</span> <span class="unread-notification-number">{{notifications.length}}</span></h2>
+        <p (click)="markallRead()">Mark all as read</p>
       </div>
       <div class="body">
-        <div class="notification unreaded">
-          <div class="avatar"><div class="user-name-make">AH</div></div>
+        <div class="notification" [matTooltip]="!item.isRead ?  'click To mark as read': ''" *ngFor="let item of notifications; let i=index" [class.unreaded]="item.isRead" (click)="markAsRead(item._id,i)">
+          <div class="avatar"><div class="user-name-make">{{createNamegetInitials(item.name)}}</div></div>
           <div class="text">
-            <div class="text-top">
-              <p class="text-message"><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
+            <div class="text-top" >
+              <p class="text-message"><span class="profil-name">{{item.name}}</span> submitted an {{item.formType}} request <b>{{item.message}}</b><span class="unread-dot" *ngIf="!item.isRead"></span></p>
             </div>
-            <div class="text-bottom"> 1m ago</div>
+            <div class="text-bottom"> {{formateDate(item.createdAt)}}</div>
           </div>
         </div>
-        <div class="notification unreaded">
-            <div class="avatar"><div class="user-name-make">AH</div></div>
-            <div class="text">
-              <div class="text-top">
-                <p><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
-              </div>
-              <div class="text-bottom"> 1m ago</div>
-            </div>
-          </div>
-          <div class="notification unreaded">
-            <div class="avatar"><div class="user-name-make">AH</div></div>
-            <div class="text">
-              <div class="text-top">
-                <p><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
-              </div>
-              <div class="text-bottom"> 1m ago</div>
-            </div>
-          </div>
-          <div class="notification unreaded">
-            <div class="avatar"><div class="user-name-make">AH</div></div>
-            <div class="text">
-              <div class="text-top">
-                <p><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
-              </div>
-              <div class="text-bottom"> 1m ago</div>
-            </div>
-          </div>
-          <div class="notification unreaded">
-            <div class="avatar"><div class="user-name-make">AH</div></div>
-            <div class="text">
-              <div class="text-top">
-                <p><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
-              </div>
-              <div class="text-bottom"> 1m ago</div>
-            </div>
-          </div>
-          <div class="notification unreaded">
-            <div class="avatar"><div class="user-name-make">AH</div></div>
-            <div class="text">
-              <div class="text-top">
-                <p><span class="profil-name">Ali Hassan</span> submitted an contact request <b>I need an website for my ecommerce business</b><span class="unread-dot"></span></p>
-              </div>
-              <div class="text-bottom"> 1m ago</div>
-            </div>
-          </div>
+
    
       </div>
     </div>
