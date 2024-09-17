@@ -2,7 +2,7 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/components/confirmation-alert/confirmation-alert.component';
 import { environment } from 'src/environments/environment';
@@ -94,7 +94,7 @@ export class FullComponent {
     private router: Router,
     private authService:AuthService,
     private notificationService: NotificationsService,
-    private socketService: SocketService
+    private socketService: SocketService,
   ) {}
 
   routerActive: string = 'activelink';

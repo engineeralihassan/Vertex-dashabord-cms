@@ -1,56 +1,80 @@
 <mat-card>
     <mat-card-content>
         <div class="heading-container">
-            <h1>Requests Table</h1>
+            <h1>Contact Requests  Table</h1>
         </div>
        
-      <div class="container">
-
-  
+      <div class="container" *ngIf="!isLoading">
         <mat-form-field class="table-filter-container">
           <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search Title,Description, author" #input>
+          <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search name,email, status" #input>
         </mat-form-field>
         
         <div class="mat-elevation-z8 request-table-wrapper">
-          <table mat-table [dataSource]="dataSource" matSort>
-        
+          <table class="request-table-view" mat-table [dataSource]="dataSource" matSort>
+                <!-- Fruit Column -->
+
+                <ng-container matColumnDef="date" *ngIf="table==='contactus-request'">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                  <td mat-cell *matCellDef="let row"> {{formatDate(row.createdAt)}} </td>
+                </ng-container>
             <!-- ID Column -->
-            <ng-container matColumnDef="img">
+            <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let row"> {{row.img}} </td>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
             </ng-container>
         
             <!-- Progress Column -->
-            <ng-container matColumnDef="title">
+            <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Email </th>
-              <td mat-cell *matCellDef="let row"> {{row.title}}</td>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.email"> {{row.email}}</td>
             </ng-container>
-            <ng-container matColumnDef="company">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Company </th>
-                <td mat-cell *matCellDef="let row"> {{row.company}}</td>
-              </ng-container>
+      
         
             <!-- Name Column -->
-            <ng-container matColumnDef="description">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Message </th>
-              <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            <ng-container matColumnDef="services" *ngIf="table==='contactus-request'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Services </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.service"> {{row.services}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="linkedIn" *ngIf="table==='training-request' || table==='job-request' ">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> LinkedIn </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.LinkedIn"> {{row?.linkedIn}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="resume" *ngIf="table==='training-request' || table==='job-request' ">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Resume </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.resume"> {{row?.resume}} </td>
+            </ng-container>
+            <ng-container matColumnDef="coverLetter" *ngIf="table==='training-request'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cover Letter </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.coverLetter"> {{row?.coverLetter}} </td>
             </ng-container>
         
-            <!-- Fruit Column -->
-            <ng-container matColumnDef="author">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-              <td mat-cell *matCellDef="let row"> {{row.author}} </td>
+    
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+              <td mat-cell *matCellDef="let row" > 
+                <select name="" id="" [value]="row.status" [ngClass]="{'bg-red':row.status==='pending','bg-green':row.status==='completed','bg-blue':row.status==='in-progress'}">
+                  <option value="pending">Pending</option>
+                  <option value="in-progress">In-Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </td>
             </ng-container>
+
+
+           
   
                       <!-- Fruit Column -->
                       <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                         <td mat-cell *matCellDef="let row" class="table-actions-row"> 
                           <div class="action-icons-wrapper">
-                            <mat-icon matTooltip="Edit Blog" matTooltipPosition="above"
+                            <mat-icon matTooltip="View Details" matTooltipPosition="above"
                             class="action-icon1" aria-hidden="false" aria-label="Example home icon" fontIcon="explore"></mat-icon>
-                            <mat-icon matTooltip="Delete Blog" matTooltipPosition="above" class="action-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                            <mat-icon matTooltip="Delete Record" matTooltipPosition="above" class="action-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
                           </div>
                     
 
