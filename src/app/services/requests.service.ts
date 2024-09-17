@@ -21,4 +21,8 @@ export class RequestsService {
   markRead(data:any){
     return this.http.patch(`${this.apiUrl}`,data)
    }
+
+   updateRequest(route:any,data:any){
+    return this.http.patch(this.apiUrl+route,data)
+   }
 }

@@ -14,6 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RequestsService } from 'src/app/services/requests.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   standalone:true,
@@ -23,6 +25,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./other-pages.component.scss']
 })
 export class OtherPagesComponent{
+  url:string=environment.docsUrl;
   displayedColumns: string[] = [];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -30,6 +33,7 @@ export class OtherPagesComponent{
   readonly dialog = inject(MatDialog);
   table:string='';
   isLoading=true;
+  private _snackBar = inject(MatSnackBar);
   constructor(private dataService:RequestsService,private route:ActivatedRoute) {
   }
 
@@ -86,6 +90,33 @@ export class OtherPagesComponent{
       this.dataSource.paginator.firstPage();
     }
   }
+  onSelectChange(event: Event,row:any): void {
+    const value = (event.target as HTMLSelectElement).value;
+    this.dataService.updateRequest(this.table,{id:row._id,status:value}).subscribe((data:any)=>{
+        this.openSnackBar("Status updated successfully",'close','success-snackbar');
+        this.updateStatus(row,value);
+    })
+  }
+
+  updateStatus(row: any, newStatus: string) {
+    // Find the index of the row you want to update
+    const rowIndex = this.dataSource.data.findIndex(data => data === row);
+
+    if (rowIndex !== -1) {
+      // Update the status of the specific row
+      this.dataSource.data[rowIndex].status = newStatus;
+
+      // Trigger table refresh
+      this.dataSource = new MatTableDataSource(this.dataSource.data);
+    }
+  }
+  openSnackBar(message: string, action: string, type: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      panelClass: [`${type}`],
+    });
+  }
+
    formatDate(dateString:any) {
     const date = new Date(dateString);
     let hours = date.getUTCHours();
