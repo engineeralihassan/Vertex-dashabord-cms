@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BlogsService } from 'src/app/services/blogs.service';
 
 @Component({
   standalone:true,
@@ -34,7 +35,7 @@ export class OtherPagesComponent{
   table:string='';
   isLoading=true;
   private _snackBar = inject(MatSnackBar);
-  constructor(private dataService:RequestsService,private route:ActivatedRoute) {
+  constructor(private dataService:RequestsService,private route:ActivatedRoute, private blogsService:BlogsService) {
   }
 
   ngOnInit(){
@@ -51,7 +52,19 @@ export class OtherPagesComponent{
       else if( this.table==='training-request'){
         this.displayedColumns=['name','email', 'linkedIn', 'resume','coverLetter', 'status','actions'];
       }
-      
+      else if( this.table==='bolg-subscriptions'){
+        this.displayedColumns=['id','email', 'active', 'actions'];
+      }
+      if(this.table==='bolg-subscriptions'){
+        console.log("HELOOOOOOOOOO");
+                 this.blogsService.getAllblogSubscriptions('/subscriptions').subscribe((data:any)=>{
+                  console.log("HELOOOOOOOOOO123444");
+                  this.dataSource= new MatTableDataSource(data?.data?.subscriptions);
+                  this.isLoading=false;
+                  console.log("Ths sit the data", data?.data?.subscriptions)
+                 }) 
+      }
+      else{
      this.dataService.getSubmissions(this.table).subscribe((data:any)=>{
       console.log("requests",data.data.requests);
       if(this.table==='contactus-request'){
@@ -71,6 +84,7 @@ export class OtherPagesComponent{
         this.dataSource.sort = this.sort;
       },300)
      })
+    }
     });
 
   }

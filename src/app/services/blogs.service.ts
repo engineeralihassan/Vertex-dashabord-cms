@@ -12,4 +12,9 @@ export class BlogsService {
   getAllblogs(){
    return this.http.get(this.apiUrl);
   }
+
+  getAllblogSubscriptions(route:any){
+    return this.http.get(this.apiUrl+route);
+   }
+
 }
