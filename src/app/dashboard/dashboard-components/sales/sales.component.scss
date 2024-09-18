@@ -63,8 +63,7 @@
     font-weight: 900;
   }
   .ag-courses-item_date-box {
-    font-size: 18px;
-    color: #000;
+  
   
     z-index: 2;
     position: relative;
@@ -72,7 +71,10 @@
   .ag-courses-item_date {
     font-weight: bold;
     color:#000;
-  
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: 900;
+    font-style: italic;
     -webkit-transition: color .5s ease;
     -o-transition: color .5s ease;
     transition: color .5s ease

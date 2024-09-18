@@ -21,7 +21,7 @@
         <div class="ag-courses-item_date-box">
           
           <span class="ag-courses-item_date">
-            #{{item.count}}
+            +{{item.count <10 ? '0'+item.count:item.count}}
           </span>
         </div>
       </a>
