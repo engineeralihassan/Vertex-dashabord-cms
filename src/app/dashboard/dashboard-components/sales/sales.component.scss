@@ -133,3 +133,13 @@
       font-size: 16px;
     }
   }
+  .loader-spinner-wrapper{
+    width: 100%;
+    min-height: 26rem;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffff;
+    margin: 1rem 0 3rem 0;
+  }

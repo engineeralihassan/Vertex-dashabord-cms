@@ -2,10 +2,10 @@
 <h3 class="blogs__cards-heading" style="margin: 2rem 0 2rem 0;"> Latest Blogs</h3>
 <div class="row">
 
-  <div class="col-lg-4" *ngFor="let card of cards">
-    <mat-card class="overflow-hidden">
+  <div class="col-lg-4" *ngFor="let card of blogs; let i=index">
+    <mat-card class="overflow-hidden" *ngIf="i<3">
       <div>
-        <img src="{{ card.image }}" class="w-100 blog-card-image" alt="">
+        <img [src]="url+card.thubmnailPhoto" class="w-100 blog-card-image" alt="card.title">
       </div>
       <mat-card-content>
         <div>
@@ -15,7 +15,7 @@
           <p class="op-7 blog-card-description">
             {{card.description}}
           </p>
-          <button mat-flat-button color="{{card.btn}}" class="fw-normal mt-4">Learn More</button>
+          <button mat-flat-button  class="fw-normal mt-4 blog-btn" (click)="navigation()">View Blogs</button>
         </div>
       </mat-card-content>
     </mat-card>

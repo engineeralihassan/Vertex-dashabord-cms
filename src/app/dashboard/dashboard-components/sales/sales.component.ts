@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { DashbaordService } from 'src/app/services/dashbaord.service';
 
 
 
@@ -12,19 +14,18 @@ import { Component} from '@angular/core';
 
 })
 export class SalesComponent {
+  stats:any[]=[];
+  isLoading=true;
+ constructor(private dashbaordService:DashbaordService) { }
 
-  statItems:any[]=[
-    {name:'Contact Requests',count:'#23',link:'/requests-data/contact-us'},
-    {name:'Job Applications',count:'#12',link:'/requests-data/job-applications'},
-    {name:'Training Requests',count:'#05',link:'/requests-data/training-requests'},
-    {name:'Blogs',count:'#12',link:'/blogs'},
-    {name:'Blogs Subscriptions',count:'#112',link:'/requests-data/blog-subscriptions'},
-    {name:'Running Products',count:'#04',link:'/products'},
-  ]
-
-
-  constructor() {
-  }
+ ngOnInit() {
+   console.log("HHHHHHHHHHH",this.stats);
+this.dashbaordService.getStats().subscribe((data:any)=>{
+this.stats=data.data.stats;
+console.log("HHHHHHHHHHH",this.stats);
+this.isLoading=false;
+})
+ }
 
 
 }

@@ -160,14 +160,22 @@
         <mat-menu #menu1="matMenu" class="notifications__container" >
         
         <ul class="notification-list" >
-          <li *ngFor="let item of notifications" (click)="navigation('notifications','notifications')"><strong>
+          <ng-container *ngFor="let item of notifications; let i=index">
+          <li *ngIf="i<4" (click)="navigation1('notifications','')"><strong>
             {{item.name}} submited a {{item.formType}} request</strong>
           <p>{{ formateDate( item.createdAt)}}    <i-feather
             name="{{ 'bell' }}"
             class="mt-3 new-notification"
           ></i-feather></p>
         </li>
- 
+
+      
+      </ng-container>
+      <li *ngIf="notifications.length<1">
+       There is not New Nitifications Please check the all notifications on your profile
+     <a class="view-all-not-btn" (click)="navigation('notifications','notifications')" >View all</a>
+    </li>
+   
          
          
         </ul>

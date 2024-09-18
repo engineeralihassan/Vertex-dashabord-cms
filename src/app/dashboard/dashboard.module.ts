@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { LoaderComponent } from '../components/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -28,7 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     NgApexchartsModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     DashboardComponent,

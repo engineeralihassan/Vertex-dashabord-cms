@@ -60,7 +60,7 @@
               <td mat-cell *matCellDef="let row" > 
                 <select  [value]="row.status" [ngClass]="{'bg-red':row.status==='pending','bg-green':row.status==='completed','bg-blue':row.status==='in-progress'}" (change)="onSelectChange($event,row)">
                   <option value="pending">Pending</option>
-                  <option value="in-progress">In-Progress</option>
+                  <option value="in-progress">In Progress</option>
                   <option value="completed">Completed</option>
                 </select>
               </td>

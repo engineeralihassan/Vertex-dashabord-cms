@@ -37,6 +37,7 @@ export class FullComponent {
 
   ngOnInit() {
   // Listen for notifications from the backend
+  this.getAllNotifications();
   this.socketService.onNewNotification().subscribe((data) => {
     this.notification = data;
     console.log(this.notification);
@@ -44,12 +45,6 @@ export class FullComponent {
     this.notificationCount=this.notifications.length;
     this.playNotificationSound();
   });
-
-
-
-
- 
-
     this.authService.getUser().subscribe((data:any)=>{
       data.name=data?.name?.split(' ')[0];
       this.user=data
@@ -61,6 +56,16 @@ export class FullComponent {
       console.log(this.user.name);
     }
   }
+
+  getAllNotifications(){
+    this.notificationService.getAllNotifications().subscribe((data:any)=>{
+      this.notifications=data?.data?.notifications;
+      let unread= this.notifications.filter((item) => !item.isRead  );
+      this.notificationCount=unread?.length;
+    })
+  }
+
+
   ngAfterViewInit() {
     setTimeout(()=>{
       this.myButton.nativeElement.click();
@@ -150,6 +155,10 @@ export class FullComponent {
   navigation(route: string, page: string) {
     this.router.navigate([`/${route}`]);
     this.activeLinkPage(page);
+  }
+  navigation1(route: string, page: string) {
+    this.router.navigate([`/${route}`]);
+   
   }
   deactiveLink() {
     this.othersPageActive = false;

@@ -1,48 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
-interface activity {
-  time: string;
-  ringColor: string;
-  message: string;
-}
+import { DashbaordService } from 'src/app/services/dashbaord.service';
 
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
 })
 export class ActivityComponent implements OnInit {
+   stats:any[]=[];
+   isLoading=true;
+  constructor(private dashbaordService:DashbaordService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log("HHHHHHHHHHH",this.stats);
+this.dashbaordService.getStats().subscribe((data:any)=>{
+this.stats=data.data.stats;
+console.log("HHHHHHHHHHH",this.stats);
+this.isLoading=false;
+})
   }
 
-  activity: activity [] = [
-    {
-      time: "09.50",
-      ringColor: "ring-success",
-      message: "Meeting with John",
-    },
-    {
-      time: "09.46",
-      ringColor: "ring-primary",
-      message: "Payment received from John Doe of $385.90",
-    },
-    {
-      time: "09.47",
-      ringColor: "ring-info",
-      message: "Project Meeting",
-    },
-    {
-      time: "09.48",
-      ringColor: "ring-warning",
-      message: "New Sale recorded #ML-3467",
-    },
-    {
-      time: "09.49",
-      ringColor: "ring-danger",
-      message: "Payment was made of $64.95 to Michael Anderson",
-    },
-  ]
+
   
 }

@@ -1,6 +1,16 @@
-<div class="ag-format-container">
+
+<div  class="loader-spinner-wrapper" *ngIf="isLoading">
+  
+  <mat-spinner color="primary" diameter="50" class="loading"></mat-spinner>
+
+
+
+</div>
+
+
+<div class="ag-format-container" *ngIf="!isLoading">
   <div class="ag-courses_box">
-    <div class="ag-courses_item" *ngFor="let item of  statItems">
+    <div class="ag-courses_item" *ngFor="let item of  stats">
       <a [routerLink]="item.link" class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
 
@@ -11,7 +21,7 @@
         <div class="ag-courses-item_date-box">
           
           <span class="ag-courses-item_date">
-            {{item.count}}
+            #{{item.count}}
           </span>
         </div>
       </a>
