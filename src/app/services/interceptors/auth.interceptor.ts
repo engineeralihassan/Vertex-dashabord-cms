@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // Retrieve the token from localStorage
     const token = localStorage.getItem('vertexcmstoken');
     
-    // Clone the request and set the Authorization header if the token exists
+    // Clone the request and set the Authorization header if the token is available
     let authReq = req;
     if (token) {
       authReq = req.clone({
@@ -23,14 +23,16 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    // Handle the request and errors
+    // Handle the request and navigate on 401 without modifying the error
     return next.handle(authReq).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          // Handle unauthorized errors by redirecting to the login page
-          this.router.navigate(['/login']); // Adjust the route as needed
+      catchError((error: any) => {
+
+        if ( error.status === 401) {
+          // Redirect to login page if 401 error occurs
+          this.router.navigate(['/login']); 
         }
-        return throwError(error); // Re-throw the error
+        // Return the error without modifying it
+        return throwError(error);
       })
     );
   }

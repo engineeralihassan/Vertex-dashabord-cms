@@ -9,6 +9,7 @@ import { CardsComponent } from './dashboard-components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -26,7 +27,8 @@ import { RouterModule } from '@angular/router';
     DemoFlexyModule,
     FormsModule,
     NgApexchartsModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule
   ],
   exports: [
     DashboardComponent,

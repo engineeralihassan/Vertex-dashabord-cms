@@ -28,7 +28,7 @@ export class LoginComponent {
 
   openSnackBar(message: string, action: string, type: string) {
     this._snackBar.open(message, action, {
-      duration: 5000,
+      duration: 3000,
       panelClass: [`${type}`],
     });
   }
@@ -72,10 +72,18 @@ export class LoginComponent {
         },
         (error: any) => {
           this.isSubmitting = false;
-          console.log(error)
-          if (error?.message) {
+          console.log("Errors",error);
+          if (error?.error?.message) {
             this.openSnackBar(
-              error?.error.message,
+              error?.error?.message,
+              'Close',
+              'error-snackbar'
+            );
+            return;
+          }
+         else if (error?.message) {
+            this.openSnackBar(
+              error?.message,
               'Close',
               'error-snackbar'
             );

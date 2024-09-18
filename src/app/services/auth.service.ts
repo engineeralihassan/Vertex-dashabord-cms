@@ -52,7 +52,9 @@ export class AuthService {
       return this.http.patch(this.apiUrl+'/'+route,data,{ withCredentials: true });
     }
     
-
+    getAllUsers(route:any){
+      return this.http.get(this.apiUrl+'/'+route,{ withCredentials: true });
+    }  
 
 logout(){
   localStorage.removeItem('vertexcmstoken')
