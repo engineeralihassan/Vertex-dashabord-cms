@@ -56,9 +56,7 @@ export class OtherPagesComponent{
         this.displayedColumns=['id','email', 'active', 'actions'];
       }
       if(this.table==='bolg-subscriptions'){
-        console.log("HELOOOOOOOOOO");
                  this.blogsService.getAllblogSubscriptions('/subscriptions').subscribe((data:any)=>{
-                  console.log("HELOOOOOOOOOO123444");
                   this.dataSource= new MatTableDataSource(data?.data?.subscriptions);
                   this.isLoading=false;
                   console.log("Ths sit the data", data?.data?.subscriptions)

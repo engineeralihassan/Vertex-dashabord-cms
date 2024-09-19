@@ -164,9 +164,10 @@
           <li *ngIf="i<4" (click)="navigation1('notifications','')"><strong>
             {{item.name}} submited a {{item.formType}} request</strong>
           <p>{{ formateDate( item.createdAt)}}    <i-feather
-            name="{{ 'bell' }}"
-            class="mt-3 new-notification"
-          ></i-feather></p>
+           
+            class=" new-notification"
+            *ngIf="!item.isRead"
+          ><img src="../../../assets/images/blue-dot.jpg" class="notification-unread-dot" alt="notification unread dot"></i-feather></p>
         </li>
 
       

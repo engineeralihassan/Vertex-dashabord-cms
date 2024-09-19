@@ -12,64 +12,40 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-export interface UserData {
-  img: string;
-  title: string;
-  description: string;
-  author: string;
-}
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+import { BlogsService } from 'src/app/services/blogs.service';
+import { environment } from 'src/environments/environment';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-blogs',
   standalone:true,
-  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,CommonModule],
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent {
+  url=environment.docsUrl;
   displayedColumns: string[] = ['img', 'title', 'description','author','actions'];
-  dataSource!: MatTableDataSource<UserData>;
+  dataSource!: MatTableDataSource<any>;
+  isLoading:boolean=true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   readonly dialog = inject(MatDialog);
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  constructor(private blogsService:BlogsService) {
+    this.blogsService.getAllblogs().subscribe((data:any)=>{
+      this.dataSource= new MatTableDataSource(data?.data?.blogs);
+      this.isLoading=false;
+      setTimeout(()=>{
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },100)
+    })
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  }
+
+  ngOnInit(){
+
   }
   openDialog() {
     const dialogRef = this.dialog.open(BlogEditorComponent);
@@ -77,10 +53,7 @@ export class BlogsComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -92,18 +65,4 @@ export class BlogsComponent {
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    img: 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
-    title: name+' in your HTML, causing Angular to throw an ',
-    description: Math.round(Math.random() * 100).toString()+FRUITS[Math.round(Math.random() * (FRUITS.length - 1))]+" in your HTML, causing Angular to throw an error when it tries to render a column with an empty ID.",
-    author: name,
-  };
-}
