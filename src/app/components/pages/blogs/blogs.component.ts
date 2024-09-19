@@ -15,11 +15,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { BlogsService } from 'src/app/services/blogs.service';
 import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../../loader/loader.component';
+import { TruncateWordsPipe } from 'src/app/services/truncate.pipe';
+
 
 @Component({
   selector: 'app-blogs',
   standalone:true,
-  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,CommonModule],
+  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,CommonModule,LoaderComponent,TruncateWordsPipe],
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.scss']
 })

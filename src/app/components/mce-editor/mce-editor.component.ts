@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import {MatButtonModule} from '@angular/material/button';
@@ -16,12 +16,10 @@ import { LoaderComponent } from '../loader/loader.component';
 })
 export class MceEditorComponent {
   @Output() onContentChange= new EventEmitter<any>();
+  @Input() showBtn=true ;
   isLoading:boolean=true;
   content: string = '';
-  saveContent() {
-    console.log("content is::",this.content)
-    return this.content;
-  }
+
   editorInit = {
     height: 500,
     menubar: true,
@@ -36,6 +34,9 @@ export class MceEditorComponent {
   };
 
   constructor(private cdr:ChangeDetectorRef) { }
+  saveContent() {
+    this.onContentChange.emit(this.content);
+  }
 
   ngOnInit(): void {}
   ngAfterViewInit(){    

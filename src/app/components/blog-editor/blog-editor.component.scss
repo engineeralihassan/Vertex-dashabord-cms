@@ -146,3 +146,10 @@ border-radius: 3px;
   .blog-content-heading{
     margin: 2rem 0;
   }
+
+  button:disabled{
+    background-color: gray;
+  }
+  .content-warning{
+    color: hsl(0, 100%, 27%);
+  }

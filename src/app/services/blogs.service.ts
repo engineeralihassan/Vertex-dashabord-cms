@@ -12,6 +12,9 @@ export class BlogsService {
   getAllblogs(){
    return this.http.get(this.apiUrl);
   }
+  createBlog(data:any){
+    return this.http.post(this.apiUrl,data);
+   }
 
   getAllblogSubscriptions(route:any){
     return this.http.get(this.apiUrl+route);

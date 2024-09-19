@@ -1,76 +1,101 @@
-<h1 mat-dialog-title>Blog Details</h1>
+<h1 mat-dialog-title>Create Blog</h1>
 
         
         <mat-dialog-content class="mat-typography editor-tabs-container">
+          <form  class="from" [formGroup]="userForm">
+
           <div class="blog-data-form">
             
             <div class="tow-col-row">
-              <mat-form-field class="cloumne" appearance="outline">
+              <div class="cloumne">
+              <mat-form-field  appearance="outline">
                 <mat-label>Blog Title</mat-label>
-                <input matInput placeholder="Placeholder">
+                <input matInput placeholder="Blog title" formControlName="title">
               </mat-form-field>
-              <mat-form-field class="cloumne" appearance="outline">
+              
+            </div>
+            <div class="cloumne">
+              <mat-form-field  appearance="outline">
                 <mat-label>Blog Category</mat-label>
-                <mat-select>
-                  <mat-option value="one">First option</mat-option>
-                  <mat-option value="two">Second option</mat-option>
+                <mat-select formControlName="category">
+                  <mat-option value="software Development">software development</mat-option>
+                  <mat-option value="Custome IT Solutions">Custome IT solutions</mat-option>
                 </mat-select>
               </mat-form-field>
+              </div>
             </div>
             <div class="tow-col-row">
+              <div class="cloumne">
      
-                <div class="form-file0feild cloumne">
-                  <p>Upload Feature File</p>
-                  <input type="file" placeholder="Upload Thumbnail">
+                <div class="form-file0feild">
+                  <p>Upload Feature File*</p>
+                  <input type="file" placeholder="Upload Thumbnail" (change)="onFileChange($event,'thumbnail')">
                 </div>
-                <div class="form-file0feild cloumne">
-                  <p>Uplaod Thumbnail File</p>
-                  <input type="file" placeholder="Upload Feature Image">
+                <p>but feild</p>
+                </div>
+                <div class="cloumne">
+                <div class="form-file0feild">
+                  <p>Uplaod Thumbnail File*</p>
+                  <input type="file" placeholder="Upload Feature Image" (change)="onFileChange($event,'Feature')">
+                </div>
+                <p>but feild</p>
                 </div>
                
              
             </div>
 
             <mat-form-field appearance="outline">
-              <mat-label>Blog Short Description</mat-label>
-              <textarea matInput></textarea>
+              <mat-label>Blog Short Description*</mat-label>
+              <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
+            <p>but feild</p>
           </div>
           <div class="blog-cta-section">
             <h3>Blog CTA</h3>
             <div class="blog-data-form">
               <div class="tow-col-row">
-                <mat-form-field class="cloumne" appearance="outline">
-                  <mat-label>CTA Title</mat-label>
-                  <input matInput placeholder="Placeholder">
-                </mat-form-field>
-                <mat-form-field class="cloumne" appearance="outline">
-                  <mat-label>CTA Button Text</mat-label>
-                  <input matInput placeholder="Placeholder">
+                <div class="cloumne">
+                <mat-form-field  appearance="outline">
+                  <mat-label>CTA Title*</mat-label>
+                  <input matInput placeholder="CTA Title" formControlName="ctaTitle">
                 </mat-form-field>
               </div>
-              <div class="tow-col-row">
-                <mat-form-field class="cloumne" appearance="outline">
-                  <mat-label>CTA URL</mat-label>
-                  <input matInput placeholder="Placeholder">
+              <div class="cloumne">
+                <mat-form-field appearance="outline">
+                  <mat-label>CTA Button Text*</mat-label>
+                  <input matInput placeholder="CTA Button Text" formControlName="ctaBtn">
                 </mat-form-field>
-                  <div class="form-file0feild cloumne">
-                    <p>CTA Image</p>
-                    <input type="file" placeholder="Upload Feature Image">
-                  </div>
-                 
-               
+              </div>   
+              </div>
+              <div class="tow-col-row">
+                <div class="cloumne">
+                <mat-form-field  appearance="outline">
+                  <mat-label>CTA URL</mat-label>
+                  <input matInput placeholder="CTA URL" formControlName="ctaUrl">
+                </mat-form-field>
+              </div>
+              <div class="cloumne">
+                <mat-form-field  appearance="outline">
+                  <mat-label>Author*</mat-label>
+                  <input matInput placeholder="Author" formControlName="author">
+                </mat-form-field>
+              
+                </div>
               </div>
   
             </div>
           </div>
-          <h3 class="blog-content-heading">Blog Content</h3>
-            <app-mce-editor></app-mce-editor>
+          <h3 class="blog-content-heading">Blog Content </h3>
+          <p class="content-warning" color="accent">Please press the save button, When your are done with content writing process to save content in the database</p>
+            <app-mce-editor (onContentChange)="receiveValueFromChild($event)" ></app-mce-editor>
+          </form>
             </mat-dialog-content>
+          
             <mat-dialog-actions align="end">
-              <button mat-button mat-dialog-close>Cancel</button>
-              <button class="save-btn" mat-button [mat-dialog-close]="closeMode" cdkFocusInitial (click)="getContentFromChild()"  >Save</button>
+              <button mat-button mat-dialog-close >Cancel</button>
+              <button class="save-btn" mat-button  (click)="createBlog()" [disabled]="userForm.invalid" >Create</button>
             </mat-dialog-actions>
+            <button style="display: none;" mat-dialog-close #closeModelBtn></button>
    
  
  
