@@ -36,6 +36,11 @@ export class BlogsComponent {
   @ViewChild(MatSort) sort!: MatSort;
   readonly dialog = inject(MatDialog);
   constructor(private blogsService:BlogsService) {
+this.getAllBlogs();
+
+  }
+
+  getAllBlogs(){
     this.blogsService.getAllblogs().subscribe((data:any)=>{
       this.dataSource= new MatTableDataSource(data?.data?.blogs);
       this.isLoading=false;
@@ -44,7 +49,6 @@ export class BlogsComponent {
         this.dataSource.sort = this.sort;
       },100)
     })
-
   }
 
   ngOnInit(){
@@ -53,7 +57,8 @@ export class BlogsComponent {
   openDialog() {
     const dialogRef = this.dialog.open(BlogEditorComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.isLoading=true;
+      this.getAllBlogs();
     });
   }
 

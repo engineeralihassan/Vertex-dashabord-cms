@@ -5,6 +5,8 @@
               {{table === 'contactus-request' ? 'Contact us Request Table': table==='job-request' ? 'Job ApplicationsTable' : table==='training-request' ? 'Training Requests Table':table=== 'bolg-subscriptions' ? 'Blog Subscriptions List': ''}}
             </h1>
         </div>
+
+        <app-loader *ngIf="isLoading"></app-loader>
        
       <div class="container" *ngIf="!isLoading">
         <mat-form-field class="table-filter-container">

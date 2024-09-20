@@ -17,10 +17,11 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BlogsService } from 'src/app/services/blogs.service';
+import { LoaderComponent } from '../../loader/loader.component';
 
 @Component({
   standalone:true,
-  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,CommonModule],
+  imports: [DemoFlexyModule, MatButtonModule, MatTooltipModule, MatIconModule,MatDialogModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,CommonModule, LoaderComponent],
   selector: 'app-other-pages',
   templateUrl: './other-pages.component.html',
   styleUrls: ['./other-pages.component.scss']
