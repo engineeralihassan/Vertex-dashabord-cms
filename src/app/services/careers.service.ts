@@ -16,7 +16,7 @@ export class CareersService {
   updateJob(route:any,data:any){
     return this.http.patch(this.apiUrl+route,data);
    }
-  createBlog(data:any){
+  createJob(data:any){
     return this.http.post(this.apiUrl,data);
    }
 

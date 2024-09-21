@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogsService } from 'src/app/services/blogs.service';
+import { CareersService } from 'src/app/services/careers.service';
 
 @Component({
   selector: 'app-jod-editor',
@@ -40,7 +41,7 @@ export class JodEditorComponent {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private blogService:BlogsService
+    private careerService:CareersService
   ) {}
 
   ngOnInit(): void {
@@ -67,13 +68,13 @@ export class JodEditorComponent {
     this.userForm = this.fb.group({
       title: ['', Validators.required],
       category: ['', Validators.required],
-      description: ['', Validators.required],
-      thubmnailPhoto: ['', Validators.required],
-      featurePhoto: ['', Validators.required],
-      ctaTitle: ['', Validators.required],
-      ctaBtn: ['', Validators.required],
-      ctaUrl: ['', Validators.required],
-      author: ['', Validators.required],
+      level: ['', Validators.required],
+      type: ['', Validators.required],
+      technology: ['', Validators.required],
+      country: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
       content: ['',],
     });
   }
@@ -98,47 +99,40 @@ export class JodEditorComponent {
   }
 
 
-  createBlogData(){
-      // Create a FormData object
+  createJobData(){
+
       let user = localStorage.getItem('vertexcmsuser') ? JSON.parse(localStorage.getItem('vertexcmsuser')!) : null;
-  console.log(user);
-  const formData = new FormData();
 
-  // Append form fields to FormData object
-  formData.append('title', this.userForm.get('title')?.value);
-  formData.append('description', this.userForm.get('description')?.value);
-  formData.append('category', this.userForm.get('category')?.value);
+      const formData = this.userForm.value;
 
-  // Handle file uploads separately, assuming they are files
-  const thumbnailPhoto = this.userForm.get('thubmnailPhoto')?.value;
-  const featurePhoto = this.userForm.get('featurePhoto')?.value;
+      const jobData = {
+        title: formData.title,
+        filters: {
+          state: formData.state,
+          city: formData.city,
+          country: formData.country,
+          technology: formData.technology,
+          category: formData.category,
+          type: formData.type,
+          level: formData.level
+        },
+        jobDetail: formData.content,
+        
+      };
 
-  formData.append('thubmnailPhoto', thumbnailPhoto ? thumbnailPhoto : '');
-  formData.append('featurePhoto', featurePhoto ? featurePhoto : '');
-
-  // Append CTA data (nested object)
-  formData.append('ctaData[title]', this.userForm.get('ctaTitle')?.value);
-  formData.append('ctaData[btnText]', this.userForm.get('ctaBtn')?.value);
-  formData.append('ctaData[url]', this.userForm.get('ctaUrl')?.value);
-
-  // Append author and content
-  formData.append('author', this.userForm.get('author')?.value);
-  formData.append('user', user?.id);
-  formData.append('content', this.userForm.get('content')?.value || '');
-
-  return formData;
+      return jobData;
   }
 
   createBlog(): void {
   
       this.isSubmitting = true;
-      console.log("FormData",this.createBlogData());
-    this.subscription=  this.blogService.createBlog(this.createBlogData()).subscribe(
+      console.log("FormData",this.createJobData());
+    this.subscription=  this.careerService.createJob(this.createJobData()).subscribe(
         (user: any) => {
           this.isSubmitting = false;
          
           this.openSnackBar(
-            'Blog created successfully',
+            'Job created successfully',
             'Close',
             'success-snackbar'
           );
