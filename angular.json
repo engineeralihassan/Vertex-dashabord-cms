@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "apexcharts"
             ],
-            "outputPath": "dist/flexy-admin-angular-lite",
+            "outputPath": "dist/my-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -119,10 +119,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Flexy-admin-angular-lite:build:production"
+              "browserTarget": "my-app:build:production"
             },
             "development": {
-              "browserTarget": "Flexy-admin-angular-lite:build:development"
+              "browserTarget": "my-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -130,7 +130,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Flexy-admin-angular-lite:build"
+            "browserTarget": "my-app:build"
           }
         },
         "test": {

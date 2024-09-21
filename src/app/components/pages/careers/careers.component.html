@@ -9,7 +9,7 @@
       <div class="container" *ngIf="!isLoading">
         <mat-form-field class="table-filter-container">
           <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search Title,Description, author" #input>
+          <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search Date,title,status,location" #input>
         </mat-form-field>
         
         <div class="mat-elevation-z8 request-table-wrapper">

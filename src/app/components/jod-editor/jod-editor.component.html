@@ -5,61 +5,61 @@
           <form  class="from" [formGroup]="userForm">
 
           <div class="blog-data-form">
+            <mat-form-field  appearance="outline">
+                <mat-label>Job Title</mat-label>
+                <input matInput placeholder="Blog title" formControlName="title">
+              </mat-form-field>
             
             <div class="tow-col-row">
               <div class="cloumne">
               <mat-form-field  appearance="outline">
-                <mat-label>Blog Title</mat-label>
+                <mat-label>Job Type</mat-label>
                 <input matInput placeholder="Blog title" formControlName="title">
               </mat-form-field>
               
             </div>
             <div class="cloumne">
               <mat-form-field  appearance="outline">
-                <mat-label>Blog Category </mat-label>
+                <mat-label>Job Category </mat-label>
                 <input matInput placeholder="Blog Category" formControlName="category">
               </mat-form-field>
               </div>
             </div>
             <div class="tow-col-row">
               <div class="cloumne">
-     
-                <div class="form-file0feild">
-                  <p>Upload Feature File*</p>
-                  <input type="file" placeholder="Upload Thumbnail" (change)="onFileChange($event,'thumbnail')">
-                </div>
+                <mat-form-field  appearance="outline">
+                    <mat-label>Job Level </mat-label>
+                    <input matInput placeholder="Blog Category" formControlName="category">
+                  </mat-form-field>
          
                 </div>
                 <div class="cloumne">
-                <div class="form-file0feild">
-                  <p>Uplaod Thumbnail File*</p>
-                  <input type="file" placeholder="Upload Feature Image" (change)="onFileChange($event,'Feature')">
-                </div>
+                    <mat-form-field  appearance="outline">
+                        <mat-label>Job Technology </mat-label>
+                        <input matInput placeholder="Blog Category" formControlName="category">
+                      </mat-form-field>
              
                 </div>
                
              
             </div>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Blog Short Description</mat-label>
-              <textarea matInput formControlName="description"></textarea>
-            </mat-form-field>
+     
           
           </div>
           <div class="blog-cta-section">
-            <h3>Blog CTA</h3>
+            <h3>Job Location</h3>
             <div class="blog-data-form">
               <div class="tow-col-row">
                 <div class="cloumne">
                 <mat-form-field  appearance="outline">
-                  <mat-label>CTA Title</mat-label>
+                  <mat-label>Job Country </mat-label>
                   <input matInput placeholder="CTA Title" formControlName="ctaTitle">
                 </mat-form-field>
               </div>
               <div class="cloumne">
                 <mat-form-field appearance="outline">
-                  <mat-label>CTA Button Text</mat-label>
+                  <mat-label>Job State</mat-label>
                   <input matInput placeholder="CTA Button Text" formControlName="ctaBtn">
                 </mat-form-field>
               </div>   
@@ -67,13 +67,13 @@
               <div class="tow-col-row">
                 <div class="cloumne">
                 <mat-form-field  appearance="outline">
-                  <mat-label>CTA URL</mat-label>
+                  <mat-label>Job City</mat-label>
                   <input matInput placeholder="CTA URL" formControlName="ctaUrl">
                 </mat-form-field>
               </div>
               <div class="cloumne">
                 <mat-form-field  appearance="outline">
-                  <mat-label>Author</mat-label>
+                  <mat-label>Job Address</mat-label>
                   <input matInput placeholder="Author" formControlName="author">
                 </mat-form-field>
               
@@ -82,7 +82,7 @@
   
             </div>
           </div>
-          <h3 class="blog-content-heading">Blog Content </h3>
+          <h3 class="blog-content-heading">Job Details </h3>
           <p class="content-warning" color="accent">Please press the save button, When your are done with content writing process to save content in the database</p>
             <app-mce-editor (onContentChange)="receiveValueFromChild($event)" ></app-mce-editor>
           </form>
