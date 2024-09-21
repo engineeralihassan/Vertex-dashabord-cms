@@ -1,1 +1,82 @@
-<p>careers works!</p>
+<mat-card>
+    <mat-card-content>
+        <div class="heading-container">
+            <h1>Vertex Jobs</h1>
+            <button mat-button class="btn" (click)="openDialog()">+ Add New</button>
+        </div>
+        <app-loader *ngIf="isLoading"></app-loader>
+       
+      <div class="container" *ngIf="!isLoading">
+        <mat-form-field class="table-filter-container">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search Title,Description, author" #input>
+        </mat-form-field>
+        
+        <div class="mat-elevation-z8 request-table-wrapper">
+          <table mat-table [dataSource]="dataSource" matSort>
+        
+            <!-- ID Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Created At </th>
+              <td mat-cell *matCellDef="let row"> {{ formatDate( row.createdAt)}} </td>
+            </ng-container>
+        
+            <!-- Progress Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.title" > {{row.title}}</td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+              <td mat-cell *matCellDef="let row" class="text"  > {{row.filters.state}}, {{row.filters.city}},  {{row.filters.country}} </td>
+            </ng-container>
+        
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+                <td mat-cell *matCellDef="let row" > 
+                  <select  [value]="row.status" [ngClass]="{'bg-red':row.status==='pending','bg-green':row.status==='completed','bg-blue':row.status==='open'}" (change)="onSelectChange($event,row)">
+                    <option value="pending">Pending</option>
+                    <option value="open">Open</option>
+                    <option value="completed">Expired</option>
+                  </select>
+                </td>
+              </ng-container>
+  
+                      <!-- Fruit Column -->
+                      <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                        <td mat-cell *matCellDef="let row" class="table-actions-row"> 
+                          <div class="action-icons-wrapper">
+                            <mat-icon matTooltip="Edit Job" matTooltipPosition="above"
+                            class="action-icon1" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+
+                            <mat-icon matTooltip="Delete Job" matTooltipPosition="above" class="action-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                            <mat-icon matTooltip="Publish Job" matTooltipPosition="above" class="action-icon3" aria-hidden="false" aria-label="Example home icon" fontIcon="publish"></mat-icon>
+                          </div>
+                    
+
+                          
+                          
+                          
+                        </td>
+                      </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+
