@@ -4,10 +4,12 @@
 
 
 <div>
-  <editor
-    apiKey="mhbf2elw7whx7itwrsnz7pc57271momgzrch6xm4hzx0hq09"
-    [init]="editorInit"
-    [(ngModel)]="content"
-  ></editor>
+<!-- TinyMCE editor -->
+<editor
+  apiKey="mhbf2elw7whx7itwrsnz7pc57271momgzrch6xm4hzx0hq09"
+  [init]="editorInit"
+  [(ngModel)]="content" 
+>
+</editor>
 </div>
-<button mat-button class="btn" (click)="saveContent()" *ngIf="showBtn" >Save</button>
+<button mat-button class="btn" (click)="saveContent()"  >Save</button>
