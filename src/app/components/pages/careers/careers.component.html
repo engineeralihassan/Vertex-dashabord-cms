@@ -38,7 +38,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
                 <td mat-cell *matCellDef="let row" > 
                   <select  [value]="row.status" [ngClass]="{'bg-red':row.status==='pending','bg-green':row.status==='completed','bg-blue':row.status==='open'}" (change)="onSelectChange($event,row)">
-                    <option value="pending">Pending</option>
+                    <option value="pending">Up coming</option>
                     <option value="open">Open</option>
                     <option value="completed">Expired</option>
                   </select>
