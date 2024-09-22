@@ -22,6 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { RequestsService } from 'src/app/services/requests.service';
 import { CareersService } from 'src/app/services/careers.service';
 import { JodEditorComponent } from '../../jod-editor/jod-editor.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-careers',
@@ -41,7 +42,7 @@ export class CareersComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   readonly dialog = inject(MatDialog);
-  constructor(private blogsService:BlogsService,private dataService:CareersService) {
+  constructor(private blogsService:BlogsService,private dataService:CareersService, private router:Router) {
 
 
   }
@@ -70,6 +71,42 @@ this.getAllJobs();
     // this.updateStatus(row,value);
   }
 
+  deleteJob(id:any){
+    let confirmation= confirm("Are you really want to delete this job");
+    if(confirmation){
+      this.dataService.deleteJob(`/${id}`).subscribe((job:any)=>{
+        this.dataSource.data = this.dataSource.data.filter((row) => row._id !== id);
+        this.openSnackBar("Job Deleted Successfully",'close','success-snackbar');
+      })
+    }
+  }
+
+  togglePublish(row:any,rowIndex:any){
+    let confirmation ;
+    if(row.published){
+    confirmation=  confirm("Are you really want to un-publish this job");
+    if(confirmation){
+      this.dataService.updateJob(`/${row._id}`,{published:false}).subscribe((job:any)=>{
+      
+     this.dataSource.data[rowIndex].published = false;
+        this.openSnackBar("Job Un Published Successfully",'close','success-snackbar');
+      })
+   
+    }
+
+    }
+    else{
+      confirmation=  confirm("Are you really want to publish this job");
+      if(confirmation){
+        this.dataService.updateJob(`/${row._id}`,{published:true}).subscribe((job:any)=>{
+          this.dataSource.data[rowIndex].published = true;
+          this.openSnackBar("Job Published Successfully",'close','success-snackbar');
+           })
+    
+      }
+    }
+  }
+
   updateStatus(row: any, newStatus: string) {
     // Find the index of the row you want to update
     const rowIndex = this.dataSource.data.findIndex(data => data === row);
@@ -94,6 +131,10 @@ this.getAllJobs();
       this.isLoading=true;
       this.getAllJobs();
     });
+  }
+
+  navigation(link:any,id:any){
+    this.router.navigate([`/${link}/${id}`]);
   }
 
   formatDate(createdAt: string): string {

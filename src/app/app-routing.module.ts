@@ -115,6 +115,13 @@ const routes: Routes = [
             (m) => m.OtherPagesComponent
           ),
       },
+      {
+        path: 'edit-jobpost/:id',
+        loadComponent: () =>
+          import('./components/edit-jobpost/edit-jobpost.component').then(
+            (m) => m.EditJobpostComponent
+          ),
+      },
       {path:'home',component:HomeComponent},
       {
         path: 'profile-settings',
