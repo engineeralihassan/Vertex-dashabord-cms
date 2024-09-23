@@ -43,7 +43,11 @@ export class FullComponent {
     console.log(this.notification);
     this.notifications.push(this.notification);
     this.notificationCount=this.notifications.length;
-    this.playNotificationSound();
+    setTimeout(()=>{
+      this.myButton.nativeElement.click();
+      this.playNotificationSound();
+    },100)
+
   });
     this.authService.getUser().subscribe((data:any)=>{
       data.name=data?.name?.split(' ')[0];
@@ -192,7 +196,7 @@ export class FullComponent {
   }
 
   private playNotificationSound(): void {
-    const audio = new Audio('../../../assets/media/notification-bell.wav'); // Update path as necessary
+    const audio = new Audio('../../../assets/media/notification-bell.wav'); 
     audio.play();
   }
 
