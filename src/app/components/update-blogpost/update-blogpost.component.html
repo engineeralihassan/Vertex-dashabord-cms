@@ -1,0 +1,8 @@
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<mat-card *ngIf="!isLoading">
+    <mat-card-content>
+       <app-blog-editor [isEdit]="true" [data]="jobData"></app-blog-editor>
+    </mat-card-content>
+</mat-card>

@@ -20,4 +20,15 @@ export class BlogsService {
     return this.http.get(this.apiUrl+route);
    }
 
+   getBlog(route:any){
+    return this.http.get(this.apiUrl+route);
+   }
+  updateBlog(route:any,data:any){
+    return this.http.patch(this.apiUrl+route,data);
+   }
+
+   deleteBlog(route:any){
+    return this.http.delete(this.apiUrl+route);
+   }
+
 }

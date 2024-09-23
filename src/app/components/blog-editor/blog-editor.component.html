@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create Blog</h1>
+<h1 mat-dialog-title>{{ isEdit ? 'Edit Blog Post':'Create New Blog'}}</h1>
 
         
         <mat-dialog-content class="mat-typography editor-tabs-container">
@@ -84,14 +84,23 @@
           </div>
           <h3 class="blog-content-heading">Blog Content </h3>
           <p class="content-warning" color="accent">Please press the save button, When your are done with content writing process to save content in the database</p>
-            <app-mce-editor (onContentChange)="receiveValueFromChild($event)" ></app-mce-editor>
+            <app-mce-editor (onContentChange)="receiveValueFromChild($event)" [data]="content" ></app-mce-editor>
           </form>
             </mat-dialog-content>
           
-            <mat-dialog-actions align="end">
+            <mat-dialog-actions align="end" *ngIf="!isEdit">
               <button mat-button mat-dialog-close >Cancel</button>
-              <button class="save-btn" mat-button  (click)="createBlog()" [disabled]="userForm.invalid" >Create</button>
+              <button class="save-btn" mat-button  (click)="createBlog()" [disabled]="userForm.invalid"    *ngIf="true" >Create</button>
+       
+  
             </mat-dialog-actions>
+            <div align="end" *ngIf="isEdit" class="edit-job-navigation-btn">
+              <button mat-button mat-dialog-close  (click)="navigation()"  >Cancel</button>
+         
+              <button class="save-btn" mat-button  (click)="updateBlog()"  > {{ isSubmitting ? 'submiting' : 'update'}}Update</button>
+            </div>
+
+            
             <button style="display: none;" mat-dialog-close #closeModelBtn></button>
    
  

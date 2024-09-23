@@ -1,2 +1,2 @@
 <app-loader *ngIf="isLaoding"></app-loader>
-<app-mce-editor (onContentChange)="receiveValueFromChild($event)" [data]="privacyData" *ngIf="!isLaoding"></app-mce-editor>
+<app-mce-editor (onContentChange)="receiveValueFromChild($event)" [data]="privacyData" [isPlain]="true" *ngIf="!isLaoding"></app-mce-editor>

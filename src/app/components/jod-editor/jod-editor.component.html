@@ -84,7 +84,7 @@
           </div>
           <h3 class="blog-content-heading">Job Details </h3>
           <p class="content-warning" color="accent">Please press the save button, When your are done with content writing process to save content in the database</p>
-            <app-mce-editor (onContentChange)="receiveValueFromChild($event)" [data]="content" ></app-mce-editor>
+            <app-mce-editor (onContentChange)="receiveValueFromChild($event)" [data]="content" [isPlain]="true"  ></app-mce-editor>
           </form>
             </mat-dialog-content>
           

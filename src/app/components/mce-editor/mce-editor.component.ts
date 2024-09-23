@@ -19,10 +19,11 @@ import { LoaderComponent } from '../loader/loader.component';
   ]
 })
 export class MceEditorComponent {
-  @Input() data!: string; // HTML content from parent
-  @Output() onContentChange = new EventEmitter<string>(); // Emit changed content
-  isLoading: boolean = true; // Loader flag
-  content: string = ''; // Bound content for TinyMCE
+  @Input() data!: string; 
+  @Output() onContentChange = new EventEmitter<string>(); 
+  isLoading: boolean = true; 
+  content: string = ''; 
+  @Input() isPlain!: true;
 
   // Editor initialization config
   editorInit = {
@@ -42,7 +43,13 @@ export class MceEditorComponent {
   // Handle changes in @Input() property `data`
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && changes['data'].currentValue) {
-      this.content = this.stripHtmlTags(this.data); // Strip HTML tags and bind plain text
+      console.log("data in editor is",this.data);
+      if(this.isPlain){
+        this.content=this.stripHtmlTags(this.data);
+      }else{
+        this.content = this.data; 
+      }
+     
     }
   }
 

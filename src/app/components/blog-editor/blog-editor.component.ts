@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MceEditorComponent } from '../mce-editor/mce-editor.component';
@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogsService } from 'src/app/services/blogs.service';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -26,7 +27,7 @@ import { BlogsService } from 'src/app/services/blogs.service';
   templateUrl: './blog-editor.component.html',
   styleUrls: ['./blog-editor.component.scss'],
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule,MceEditorComponent,MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,MatSelectModule,FormsModule,ReactiveFormsModule],
+  imports: [MatDialogModule, MatButtonModule,MceEditorComponent,MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,MatSelectModule,FormsModule,ReactiveFormsModule,CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogEditorComponent {
@@ -34,11 +35,15 @@ export class BlogEditorComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('closeModelBtn') buttonRef!: ElementRef<HTMLButtonElement>;
+  @Input() data: any;
+  @Input() isEdit: any;
   closeMode:boolean=false;
   subscription!:Subscription;
   private timeoutId:any;
   userForm!: FormGroup;
   isSubmitting: boolean = false;
+  jobId:any;
+  content:any;
   private _snackBar = inject(MatSnackBar);
   constructor(
     private router: Router,
@@ -53,7 +58,6 @@ export class BlogEditorComponent {
 
 
   receiveValueFromChild(value: string) {
-    console.log('Value received from child:', value);
     this.userForm.patchValue({
       content: value
     });
@@ -102,6 +106,29 @@ export class BlogEditorComponent {
   }
 
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && changes['data'].currentValue) {
+      setTimeout(() => {
+        this.patchFormValues(this.data);
+      }, 100);
+    }
+  }
+
+  patchFormValues(formObject: any) {
+    this.userForm.patchValue({
+      title: formObject.title,
+      category: formObject.category,
+      description: formObject.description,
+      ctaTitle: formObject.ctaTitle,
+      ctaBtn: formObject.ctaBtn,
+      ctaUrl: formObject.ctaUrl,
+      author: formObject.author,
+      content: formObject.content,
+    });
+    this.content = formObject.content;
+    this.jobId = formObject.blogId;
+  }
+
   createBlogData(){
       // Create a FormData object
       let user = localStorage.getItem('vertexcmsuser') ? JSON.parse(localStorage.getItem('vertexcmsuser')!) : null;
@@ -132,6 +159,32 @@ export class BlogEditorComponent {
 
   return formData;
   }
+  updateBlogData(){
+const formData = new FormData();
+formData.append('title', this.userForm.get('title')?.value);
+formData.append('description', this.userForm.get('description')?.value);
+formData.append('category', this.userForm.get('category')?.value);
+
+
+
+const thumbnailPhoto = this.userForm.get('thubmnailPhoto')?.value;
+const featurePhoto = this.userForm.get('featurePhoto')?.value;
+formData.append('thubmnailPhoto', thumbnailPhoto ? thumbnailPhoto : '');
+formData.append('featurePhoto', featurePhoto ? featurePhoto : '');
+
+// Append CTA data (nested object)
+formData.append('ctaData[title]', this.userForm.get('ctaTitle')?.value);
+formData.append('ctaData[btnText]', this.userForm.get('ctaBtn')?.value);
+formData.append('ctaData[url]', this.userForm.get('ctaUrl')?.value);
+
+// Append author and content
+formData.append('author', this.userForm.get('author')?.value);
+formData.append('content', this.userForm.get('content')?.value || '');
+
+return formData;
+}
+
+
 
   createBlog(): void {
   
@@ -175,8 +228,48 @@ export class BlogEditorComponent {
     
   }
 
+  updateBlog(): void {
+    this.isSubmitting = true;
+    this.subscription = this.blogService
+      .updateBlog(`/${this.jobId}`, this.updateBlogData())
+      .subscribe(
+        (user: any) => {
+          this.isSubmitting = false;
+
+          this.openSnackBar(
+            'Blog updated successfully',
+            'Close',
+            'success-snackbar'
+          );
+          setTimeout(() => {
+            this.router.navigate(['/blogs']);
+          }, 100);
+        },
+        (error: any) => {
+          console.log('Error', error);
+          this.isSubmitting = false;
+          if (error?.error?.error?.keyValue?.email) {
+            this.openSnackBar(
+              'This email already registered Please login',
+              'Close',
+              'error-snackbar'
+            );
+            return;
+          }
+          this.openSnackBar(
+            'Something went 😔 wront Please try again',
+            'Close',
+            'error-snackbar'
+          );
+        }
+      );
+  }
+
   login() {
     this.router.navigate(['/dashboard']);
+  }
+  navigation() {
+    this.router.navigate(['/blogs']);
   }
   ngOnDestroy(){
     if(this.subscription){

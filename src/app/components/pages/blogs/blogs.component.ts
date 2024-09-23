@@ -17,6 +17,8 @@ import { environment } from 'src/environments/environment';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../loader/loader.component';
 import { TruncateWordsPipe } from 'src/app/services/truncate.pipe';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -31,12 +33,13 @@ export class BlogsComponent {
   displayedColumns: string[] = ['img', 'title', 'description','author','actions'];
   dataSource!: MatTableDataSource<any>;
   isLoading:boolean=true;
+  private _snackBar = inject(MatSnackBar);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   readonly dialog = inject(MatDialog);
-  constructor(private blogsService:BlogsService) {
-this.getAllBlogs();
+  constructor(private blogsService:BlogsService, private router:Router) {
+    this.getAllBlogs();
 
   }
 
@@ -61,7 +64,57 @@ this.getAllBlogs();
       this.getAllBlogs();
     });
   }
+  navigation(link:any,id:any){
+    this.router.navigate([`/${link}/${id}`]);
+  }
+  deleteBlog(id:any){
+    let confirmation= confirm("Are you really want to delete this job");
+    if(confirmation){
+      // this.dataService.deleteJob(`/${id}`).subscribe((job:any)=>{
+      //   this.dataSource.data = this.dataSource.data.filter((row) => row._id !== id);
+      //   this.openSnackBar("Job Deleted Successfully",'close','success-snackbar');
+      // })
+      this.dataSource.data = this.dataSource.data.filter((row) => row._id !== id);
+      this.openSnackBar("Job Deleted Successfully",'close','success-snackbar');
+    }
+  }
 
+  togglePublish(row:any,rowIndex:any){
+    let confirmation ;
+    if(row.published){
+    confirmation=  confirm("Are you really want to un-publish this job");
+    if(confirmation){
+    //   this.dataService.updateJob(`/${row._id}`,{published:false}).subscribe((job:any)=>{
+      
+    //  this.dataSource.data[rowIndex].published = false;
+    //     this.openSnackBar("Job Un Published Successfully",'close','success-snackbar');
+    //   })
+    this.dataSource.data[rowIndex].published = false;
+    this.openSnackBar("Job Un Published Successfully",'close','success-snackbar');
+   
+    }
+
+    }
+    else{
+      confirmation=  confirm("Are you really want to publish this job");
+      if(confirmation){
+        // this.dataService.updateJob(`/${row._id}`,{published:true}).subscribe((job:any)=>{
+        //   this.dataSource.data[rowIndex].published = true;
+        //   this.openSnackBar("Job Published Successfully",'close','success-snackbar');
+        //    })
+        this.dataSource.data[rowIndex].published = true;
+        this.openSnackBar("Job Published Successfully",'close','success-snackbar');
+    
+      }
+    }
+  }
+
+  openSnackBar(message: string, action: string, type: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+      panelClass: [`${type}`],
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

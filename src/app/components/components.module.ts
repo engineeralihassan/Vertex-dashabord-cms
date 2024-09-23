@@ -23,6 +23,7 @@ import { RouterModule } from '@angular/router';
 
 
 
+
 @NgModule({
   imports: [
     MatButtonModule,
@@ -45,6 +46,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LoginComponent,
     SignUpComponent,
+    
 
 
   ]

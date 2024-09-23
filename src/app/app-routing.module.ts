@@ -122,6 +122,13 @@ const routes: Routes = [
             (m) => m.EditJobpostComponent
           ),
       },
+      {
+        path: 'edit-blogpost/:id',
+        loadComponent: () =>
+          import('./components/update-blogpost/update-blogpost.component').then(
+            (m) => m.UpdateBlogpostComponent
+          ),
+      },
       {path:'home',component:HomeComponent},
       {
         path: 'profile-settings',
