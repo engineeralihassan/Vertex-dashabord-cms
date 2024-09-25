@@ -64,7 +64,6 @@ export class JodEditorComponent {
   @Input() isEdit: any;
   closeMode: boolean = false;
   subscription!: Subscription;
-  private timeoutId: any;
   userForm!: FormGroup;
   isSubmitting: boolean = false;
   jobId: any;
