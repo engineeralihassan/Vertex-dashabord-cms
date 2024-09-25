@@ -12,6 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { RouterModule } from '@angular/router';
+import { RequestDetailsComponent } from './request-details/request-details.component';
 
 
 
@@ -46,6 +47,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LoginComponent,
     SignUpComponent,
+    RequestDetailsComponent,
     
 
 

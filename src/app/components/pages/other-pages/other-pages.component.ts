@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BlogsService } from 'src/app/services/blogs.service';
 import { LoaderComponent } from '../../loader/loader.component';
+import { RequestDetailsComponent } from '../../request-details/request-details.component';
 
 @Component({
   standalone:true,
@@ -88,7 +89,7 @@ export class OtherPagesComponent{
 
   }
   openDialog() {
-    const dialogRef = this.dialog.open(BlogEditorComponent);
+    const dialogRef = this.dialog.open(RequestDetailsComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
