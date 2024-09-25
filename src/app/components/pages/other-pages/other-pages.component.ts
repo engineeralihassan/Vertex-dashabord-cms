@@ -95,7 +95,12 @@ export class OtherPagesComponent{
     });
   }
 
-
+getRecord(id:any){
+ this.dataService.getRequest(`${this.table}/${id}`).subscribe((data:any)=>{
+  data.data.record.formType=this.table;
+this.dataService.updateRequestData(data?.data?.record);
+ })
+}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

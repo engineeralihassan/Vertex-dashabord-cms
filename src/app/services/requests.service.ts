@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class RequestsService {
   apiUrl:string=  environment.baseUrl+'submissions/';
   private notificationSubject = new Subject<any[]>();
+  private requestObject = new BehaviorSubject<any>({});
 
   constructor(private http: HttpClient) { }
 
@@ -25,4 +26,17 @@ export class RequestsService {
    updateRequest(route:any,data:any){
     return this.http.patch(this.apiUrl+route,data)
    }
+
+   updateRequestData(user:any) {
+    this.requestObject.next(user);
+}
+
+getRequestData() {
+  return this.requestObject.asObservable();
+}
+
+   getRequest(route:any){
+    return this.http.get(this.apiUrl+route)
+   }
+
 }

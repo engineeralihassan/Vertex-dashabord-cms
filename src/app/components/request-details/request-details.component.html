@@ -5,6 +5,86 @@
 
         
         <mat-dialog-content class="mat-typography editor-tabs-container">
+            <div class="request-details-container">
+                <div class="activities" *ngIf="data?.activities">
+                    <h3> Request Activities</h3>
+                    <div class="activity" *ngFor="let item of data?.activities">
+                        <p class="name">{{createNamegetInitials(item?.name)}}</p>
+                        <p class="activity-text"> <b>{{item?.name}}</b> 
+                            changed request Status <strong>{{formateDate(item?.createdAt)}}</strong>
+                             <small>{{item?.status}}</small>
+                           </p>
+
+                    </div>
+                   
+                </div>
+                <div class="request-details">
+                    <select  [value]="data?.status" [ngClass]="{'bg-red':data?.status==='pending','bg-green':data?.status==='completed','bg-blue':data?.status==='in-progress'}" >
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                      </select>
+
+                      <div class="request-detail-keys">
+                        <div class="box">
+                            <p class="key">Requested At </p>
+                            <p class="value">{{formateDate(data?.createdAt)}}</p>
+                        </div>
+
+                        <div class="box">
+                            <p class="key">Requested Type </p>
+                            <select  [value]="data?.formType" disabled  >
+                                <option value="contact-request">Contact Us</option>
+                                <option value="job-request">Job Allpication</option>
+                                <option value="training-request">Training Request</option>
+                                <option value="bolg-subscription">Blog Subscription</option>
+                              </select>
+                        </div>
+
+
+                        <div class="box">
+                            <p class="key">Name</p>
+                            <p class="value">{{data?.name}}</p>
+                        </div>
+                        <div class="box">
+                            <p class="key">Email</p>
+                            <p class="value">{{data?.email}}</p>
+                        </div>
+                        <div class="box" *ngIf="data?.intrest">
+                            <p class="key">Intrest</p>
+                            <p class="value">ali.hassan@gmail.com</p>
+                        </div>
+                        <div class="box" *ngIf="data?.services">
+                            <p class="key">Services</p>
+                            <p class="value">ali.hassan@gmail.com</p>
+                        </div>
+                        <div class="box" *ngIf="data?.resume">
+                            <p class="key">Resume</p>
+                            <p class="value"><a href="{{url+data.resume}}" target="_blank">View Resume</a></p>
+                        </div>
+                        <div class="box" *ngIf="data?.coverLetter">
+                            <p class="key">CoverLetter</p>
+                            <p class="value"><a href="{{url+data.coverLetter}}" target="_blank">View CoverLetter </a></p>
+                        </div>
+                        <div class="box" *ngIf="data?.linkedIn">
+                            <p class="key">LinkedIn</p>
+                            <p class="value"><a href="{{data.linkedIn}}" target="_blank">View Profile</a></p>
+                        </div>
+                        <div class="box" *ngIf="data?.education">
+                            <p class="key">Education</p>
+                            <p class="value">{{data?.education}}</p>
+                        </div>
+                        <div class="box" *ngIf="data?.message">
+                            <p class="key">Message</p>
+                            <p class="value">{{data.message}}</p>
+                        </div>
+
+
+                      </div>
+                </div>
+            </div>
+
+            
         
             </mat-dialog-content>
           
