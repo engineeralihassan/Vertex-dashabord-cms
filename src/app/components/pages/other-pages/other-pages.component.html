@@ -88,7 +88,7 @@
                           <div class="action-icons-wrapper">
                             <mat-icon *ngIf="table !=='bolg-subscriptions'"  (click)=" openDialog()" (click)="getRecord(row._id)" matTooltip="Request Details" matTooltipPosition="above"
                             class="action-icon1" aria-hidden="false" aria-label="Example home icon" fontIcon="explore"></mat-icon>
-                            <mat-icon matTooltip="Delete Request" matTooltipPosition="above" class="action-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                            <mat-icon (click)="deleteRequest(row._id)" matTooltip="Delete Request" matTooltipPosition="above" class="action-icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
                           </div>
                     
 

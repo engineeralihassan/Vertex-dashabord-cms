@@ -19,7 +19,7 @@
                    
                 </div>
                 <div class="request-details">
-                    <select  [value]="data?.status" [ngClass]="{'bg-red':data?.status==='pending','bg-green':data?.status==='completed','bg-blue':data?.status==='in-progress'}" >
+                    <select disabled [value]="data?.status" [ngClass]="{'bg-red':data?.status==='pending','bg-green':data?.status==='completed','bg-blue':data?.status==='in-progress'}" >
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>
                         <option value="completed">Completed</option>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -38,5 +38,15 @@ getRequestData() {
    getRequest(route:any){
     return this.http.get(this.apiUrl+route)
    }
+   deleteRequest(route:any,data:any){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: data  // Pass the body here
+    };
+    return this.http.delete(this.apiUrl+route,options);
+   }
+
 
 }

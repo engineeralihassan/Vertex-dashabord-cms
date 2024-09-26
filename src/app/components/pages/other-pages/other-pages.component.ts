@@ -4,7 +4,7 @@ import { DemoFlexyModule } from 'src/app/demo-flexy-module';
 import { Component, inject, ViewChild} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { BlogEditorComponent } from '../../blog-editor/blog-editor.component';
+
 
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
@@ -100,6 +100,37 @@ getRecord(id:any){
   data.data.record.formType=this.table;
 this.dataService.updateRequestData(data?.data?.record);
  })
+}
+deleteRequest(item:any){
+  let confirmation= confirm("Are you really want to delete Request");
+  if(confirmation){
+  if(this.table==='bolg-subscriptions'){
+    this.blogsService.deleteSubscription('/subscriptions',{id:item}).subscribe((data:any)=>{
+      this.openSnackBar("Request Deleted successfully",'close','success-snackbar');
+      this.dataSource.data = this.dataSource.data.filter((row) => row._id !== item);
+    },(error:any)=>{
+      if(error.status=== 404){
+        this.openSnackBar("Something went wrong Try again 😔",'close','error-snackbar');
+      }
+    })
+
+  }
+  else{
+
+  
+    this.dataService.deleteRequest(this.table,{id:item}).subscribe((data:any)=>{
+      this.openSnackBar("Request Deleted successfully",'close','success-snackbar');
+      this.dataSource.data = this.dataSource.data.filter((row) => row._id !== item);
+    },(error:any)=>{
+      if(error.status=== 404){
+        this.openSnackBar("Something went wrong Try again 😔",'close','error-snackbar');
+      }
+    }
+
+  )
+}
+  }
+
 }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -29,6 +29,15 @@ export class BlogsService {
 
    deleteBlog(route:any){
     return this.http.delete(this.apiUrl+route);
+   }
+   deleteSubscription(route:any,data:any){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: data 
+    };
+    return this.http.delete(this.apiUrl+route,options);
    }
 
 }
