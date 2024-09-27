@@ -78,6 +78,11 @@
           <mat-label>Story description</mat-label>
           <input matInput placeholder="Placeholder" />
         </mat-form-field>
+        
+        <mat-form-field class="cloumne" appearance="outline">
+          <mat-label>Story Year</mat-label>
+          <input matInput placeholder="Placeholder" />
+        </mat-form-field>
 
         <div class="form-file0feild cloumne">
           <p>Uplaod Story Image</p>
@@ -210,10 +215,6 @@
       </div>
       <hr />
 
-      <!-- <mat-form-field class="table-filter-container">
-                    <mat-label>Filter</mat-label>
-                    <input matInput (keyup)="applyFilter($event)" class="blogs-filter-input" placeholder="Search Title,Description, author" #input>
-                  </mat-form-field> -->
 
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
@@ -276,10 +277,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-          <!-- Row shown when there is no matching data.
-                      <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                      </tr> -->
+
         </table>
       </div>
     </mat-expansion-panel>
@@ -337,7 +335,7 @@
 
       <mat-expansion-panel class="about-us-section">
         <mat-expansion-panel-header>
-          <mat-panel-title>Vertex Section </mat-panel-title>
+          <mat-panel-title>Locations Section </mat-panel-title>
           <mat-panel-description> Click to open </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="tow-col-row">
@@ -456,7 +454,7 @@
       </mat-expansion-panel>
       <mat-expansion-panel class="about-us-section">
         <mat-expansion-panel-header>
-          <mat-panel-title>Industries Section </mat-panel-title>
+          <mat-panel-title>Partners Section </mat-panel-title>
           <mat-panel-description> Click to open </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="tow-col-row">
@@ -505,7 +503,7 @@
       </mat-expansion-panel>
       <mat-expansion-panel class="about-us-section">
         <mat-expansion-panel-header>
-          <mat-panel-title>CTA1 Section </mat-panel-title>
+          <mat-panel-title>CTA Section </mat-panel-title>
           <mat-panel-description> Click to open </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="tow-col-row">
@@ -521,7 +519,7 @@
       </mat-expansion-panel>
       <mat-expansion-panel class="about-us-section">
         <mat-expansion-panel-header>
-          <mat-panel-title>CTA2 Section </mat-panel-title>
+          <mat-panel-title>Join Us Section </mat-panel-title>
           <mat-panel-description> Click to open </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="tow-col-row">
