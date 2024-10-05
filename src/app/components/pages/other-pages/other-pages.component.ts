@@ -47,9 +47,9 @@ export class OtherPagesComponent{
       this.table = params['table'];  // 'dynamicText' is the name of the route parameter
       console.log('Dynamic part of the route:', this.table);
       if(this.table==='contactus-request'){
-        this.displayedColumns=['date','name', 'email', 'services', 'status','actions'];
+        this.displayedColumns=['date','name', 'email', 'company', 'services', 'status','actions'];
       }else if( this.table==='job-request'){
-        this.displayedColumns=['name','email', 'linkedIn', 'resume', 'status','actions'];
+        this.displayedColumns=[ 'date','title','name','email', 'linkedIn', 'resume', 'status','actions'];
       }
       else if( this.table==='training-request'){
         this.displayedColumns=['name','email', 'linkedIn', 'resume','coverLetter', 'status','actions'];
@@ -98,14 +98,14 @@ export class OtherPagesComponent{
 getRecord(id:any){
  this.dataService.getRequest(`${this.table}/${id}`).subscribe((data:any)=>{
   data.data.record.formType=this.table;
-this.dataService.updateRequestData(data?.data?.record);
+  this.dataService.updateRequestData(data?.data?.record);
  })
 }
 deleteRequest(item:any){
   let confirmation= confirm("Are you really want to delete Request");
   if(confirmation){
   if(this.table==='bolg-subscriptions'){
-    this.blogsService.deleteSubscription('/subscriptions',{id:item}).subscribe((data:any)=>{
+    this.blogsService.deleteSubscription('/subscriptions',{id:item,status:true}).subscribe((data:any)=>{
       this.openSnackBar("Request Deleted successfully",'close','success-snackbar');
       this.dataSource.data = this.dataSource.data.filter((row) => row._id !== item);
     },(error:any)=>{
@@ -118,7 +118,7 @@ deleteRequest(item:any){
   else{
 
   
-    this.dataService.deleteRequest(this.table,{id:item}).subscribe((data:any)=>{
+    this.dataService.deleteRequest(this.table,{id:item,status:true}).subscribe((data:any)=>{
       this.openSnackBar("Request Deleted successfully",'close','success-snackbar');
       this.dataSource.data = this.dataSource.data.filter((row) => row._id !== item);
     },(error:any)=>{

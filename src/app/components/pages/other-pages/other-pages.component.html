@@ -18,7 +18,7 @@
           <table class="request-table-view" mat-table [dataSource]="dataSource" matSort>
                 <!-- Fruit Column -->
 
-                <ng-container matColumnDef="date" *ngIf="table==='contactus-request'">
+                <ng-container matColumnDef="date" *ngIf="table==='contactus-request' || table==='job-request' ">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                   <td mat-cell *matCellDef="let row"> {{formatDate(row.createdAt)}} </td>
                 </ng-container>
@@ -43,6 +43,11 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Email </th>
               <td mat-cell *matCellDef="let row" [matTooltip]="row.email"> {{row.email}}</td>
             </ng-container>
+
+            <ng-container matColumnDef="company" *ngIf="table==='contactus-request'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.service"> {{row.company}} </td>
+            </ng-container>
       
         
             <!-- Name Column -->
@@ -51,10 +56,16 @@
               <td mat-cell *matCellDef="let row" [matTooltip]="row.service"> {{row.services}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="title" *ngIf="table==='job-request'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Title </th>
+              <td mat-cell *matCellDef="let row" [matTooltip]="row.service"> {{row.jobTitle}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="linkedIn" *ngIf="table==='training-request' || table==='job-request' ">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> LinkedIn </th>
               <td mat-cell *matCellDef="let row" [matTooltip]="row.LinkedIn"> <a href="{{row.linkedIn}}" target="_blank">View Profile</a> </td>
             </ng-container>
+
 
             <ng-container matColumnDef="resume" *ngIf="table==='training-request' || table==='job-request' ">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Resume </th>

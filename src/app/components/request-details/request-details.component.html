@@ -16,6 +16,11 @@
                            </p>
 
                     </div>
+                    <div class="activity" *ngIf="data?.activities.length<1">
+                      <p>No Activities found for this request</p>
+
+                    </div>
+
                    
                 </div>
                 <div class="request-details">
@@ -34,7 +39,7 @@
                         <div class="box">
                             <p class="key">Requested Type </p>
                             <select  [value]="data?.formType" disabled  >
-                                <option value="contact-request">Contact Us</option>
+                                <option value="contactus-request">Contact Us</option>
                                 <option value="job-request">Job Allpication</option>
                                 <option value="training-request">Training Request</option>
                                 <option value="bolg-subscription">Blog Subscription</option>
@@ -46,17 +51,25 @@
                             <p class="key">Name</p>
                             <p class="value">{{data?.name}}</p>
                         </div>
+                        <div class="box" *ngIf="data?.company">
+                            <p class="key">Company</p>
+                            <p class="value">{{data?.company}}</p>
+                        </div>
                         <div class="box">
                             <p class="key">Email</p>
                             <p class="value">{{data?.email}}</p>
                         </div>
+                        <div class="box" *ngIf="data?.jobTitle">
+                            <p class="key">Job Title</p>
+                            <p class="value">{{data.jobTitle}}</p>
+                        </div>
                         <div class="box" *ngIf="data?.intrest">
                             <p class="key">Intrest</p>
-                            <p class="value">ali.hassan@gmail.com</p>
+                            <p class="value">{{data?.intrest}}</p>
                         </div>
                         <div class="box" *ngIf="data?.services">
                             <p class="key">Services</p>
-                            <p class="value">ali.hassan@gmail.com</p>
+                            <p class="value">{{data?.services}}</p>
                         </div>
                         <div class="box" *ngIf="data?.resume">
                             <p class="key">Resume</p>
