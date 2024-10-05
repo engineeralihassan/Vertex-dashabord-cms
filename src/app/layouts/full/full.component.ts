@@ -115,40 +115,40 @@ export class FullComponent {
       menu: 'Dashboard',
     },
     {
-      link: '/services',
+      link: '/requests-data/contactus-request',
       icon: 'bar-chart-2',
-      menu: 'Services',
+      menu: 'Contact Requests',
     },
     {
-      link: '/industries',
+      link: '/requests-data/job-request',
       icon: 'layers',
-      menu: 'Industries',
+      menu: 'Job Applications',
     },
     {
-      link: '/company',
+      link: '/requests-data/bolg-subscriptions',
       icon: 'award',
-      menu: 'Company',
+      menu: 'Blog Subscriptions',
     },
-    {
-      link: '/products',
-      icon: 'grid',
-      menu: 'Products',
-    },
-    {
-      link: '/careers',
-      icon: 'sliders',
-      menu: 'Careers',
-    },
-    {
-      link: '/blogs',
-      icon: 'book',
-      menu: 'Blogs',
-    },
-    {
-      link: '/case-studies',
-      icon: 'voicemail',
-      menu: 'Case Studies',
-    },
+    // {
+    //   link: '/products',
+    //   icon: 'grid',
+    //   menu: 'Products',
+    // },
+    // {
+    //   link: '/careers',
+    //   icon: 'sliders',
+    //   menu: 'Careers',
+    // },
+    // {
+    //   link: '/blogs',
+    //   icon: 'book',
+    //   menu: 'Blogs',
+    // },
+    // {
+    //   link: '/case-studies',
+    //   icon: 'voicemail',
+    //   menu: 'Case Studies',
+    // },
     {
       link: '/notifications',
       icon: 'bell',

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { DashbaordService } from 'src/app/services/dashbaord.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 
 
@@ -16,7 +17,7 @@ import { DashbaordService } from 'src/app/services/dashbaord.service';
 export class SalesComponent {
   stats:any[]=[];
   isLoading=true;
- constructor(private dashbaordService:DashbaordService) { }
+ constructor(private dashbaordService:DashbaordService, private socketService:SocketService) { }
 
  ngOnInit() {
    console.log("HHHHHHHHHHH",this.stats);
@@ -25,6 +26,13 @@ this.stats=data.data.stats;
 console.log("HHHHHHHHHHH",this.stats);
 this.isLoading=false;
 })
+this.socketService.onNewNotification().subscribe((data) => {
+  this.dashbaordService.getStats().subscribe((data:any)=>{
+    this.stats=data.data.stats;
+    this.isLoading=false;
+    })
+
+});
  }
 
 
