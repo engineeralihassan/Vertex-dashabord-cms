@@ -47,7 +47,7 @@ export class OtherPagesComponent{
       this.table = params['table'];  // 'dynamicText' is the name of the route parameter
       console.log('Dynamic part of the route:', this.table);
       if(this.table==='contactus-request'){
-        this.displayedColumns=['date','name', 'email', 'company', 'services', 'status','actions'];
+        this.displayedColumns=['date','name', 'email', 'coupen', 'company', 'services', 'status','actions'];
       }else if( this.table==='job-request'){
         this.displayedColumns=[ 'date','title','name','email', 'linkedIn', 'resume', 'status','actions'];
       }

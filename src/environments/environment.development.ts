@@ -4,3 +4,5 @@ export const environment = {
     userMediaUrl: 'http://127.0.0.1:3000/img/users/',
     docsUrl:'http://127.0.0.1:3000/documents/'
   };
+
+
